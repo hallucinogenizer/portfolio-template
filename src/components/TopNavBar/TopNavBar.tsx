@@ -2,6 +2,7 @@ import { useState } from "react";
 import { cn } from "../../lib/utils/cn";
 import {
   EXPERTISE_SECTION_ID,
+  HERO_SECTION_ID,
   WORK_EXPERIENCE_SECTION_ID,
 } from "../../lib/constants";
 
@@ -10,7 +11,7 @@ export const TopNavBar = () => (
     <ul className="relative -right-1/2 list-none px-8 py-3 bg-slate-900 bg-opacity-90 shadow flex justify-between leading-tight text-neutral-300">
       <li className="text-base ">Logo</li>
       <div className="text-sm flex basis-96 justify-evenly">
-        <MenuItem text="Home" />
+        <MenuItem text="Home" sectionIdToGoTo={HERO_SECTION_ID} />
         <MenuItem text="Expertise" sectionIdToGoTo={EXPERTISE_SECTION_ID} />
         <MenuItem text="Work" sectionIdToGoTo={WORK_EXPERIENCE_SECTION_ID} />
         <MenuItem text="Contact" />
