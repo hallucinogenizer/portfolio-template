@@ -1,10 +1,11 @@
-export const skillsData: {
+export type SkillType = {
   icon: string;
   title: string;
   description: string;
-}[] = [
+};
+export const skillsData: SkillType[] = [
   {
-    icon: "fa-sharp fa-light fa-computer",
+    icon: "fa-solid fa-desktop",
     title: "Web Development",
     description:
       "Experienced in both functional and OOP: Dart, Python, Java, JavaScript, TypeScript.",
@@ -38,5 +39,5 @@ export const skillsData: {
     title: "Backend Development",
     description:
       "Experienced in both functional and OOP: Dart, Python, Java, JavaScript, TypeScript.",
-  }
+  },
 ];

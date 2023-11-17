@@ -1,5 +1,6 @@
 import BackgroundStarsImage from "../../assets/bg-stars.png";
 import SkillCard from "./SkillCard";
+import { skillsData } from "./skills";
 export default function MyExpertiseSection() {
   return (
     <div
@@ -22,11 +23,8 @@ const SectionHeading = () => (
 
 const SkillCards = () => (
   <div className="grid grid-cols-3 gap-6">
-    <SkillCard />
-    <SkillCard />
-    <SkillCard />
-    <SkillCard />
-    <SkillCard />
-    <SkillCard />
+    {skillsData.map((skill) => (
+      <SkillCard content={skill} />
+    ))}
   </div>
 );
