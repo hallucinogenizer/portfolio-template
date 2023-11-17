@@ -5,31 +5,36 @@ import { ExperienceDataType, experienceData } from "./experienceData";
 import { cn } from "../../lib/utils/cn";
 
 export default function TimelineDisplay() {
-  const rightSideExperiences = experienceData.filter((_, i) => i % 2 === 0);
-  const leftSideExperiences = experienceData.filter((_, i) => i % 2 !== 0);
-
   return (
-    <div className="flex text-light" style={{ height: "80rem" }}>
+    <div className="flex text-light h-full">
       {/* left half of screen */}
       <div
         className="h-full flex flex-col justify-start items-end pt-12"
         style={{ flexBasis: "calc(50% - 0.375rem)" }}
       >
-        {leftSideExperiences.map((experienceContent) => (
-          <SingleExperience content={experienceContent} side="LEFT" />
+        {experienceData.map((experienceContent, i) => (
+          <SingleExperience
+            content={experienceContent}
+            side="LEFT"
+            className={i % 2 === 0 ? "invisible" : ""}
+          />
         ))}
       </div>
 
       {/* line down the middle */}
-      <div className="w-1.5 h-full bg-gradient-to-b from-neutral-900/60 via-20% via-cyan-500/60 to-neutral-900/60" />
+      <div className="w-1.5 min-h-max bg-gradient-to-b from-neutral-900/60 via-20% via-cyan-500/60 to-neutral-900/60" />
 
       {/* right half of screen */}
       <div
         className="h-full flex flex-col justify-start items-start pt-12"
         style={{ flexBasis: "calc(50% - 0.375rem)" }}
       >
-        {rightSideExperiences.map((experienceContent) => (
-          <SingleExperience content={experienceContent} side="RIGHT" />
+        {experienceData.map((experienceContent, i) => (
+          <SingleExperience
+            content={experienceContent}
+            side="RIGHT"
+            className={i % 2 !== 0 ? "invisible" : ""}
+          />
         ))}
       </div>
     </div>
@@ -39,11 +44,19 @@ export default function TimelineDisplay() {
 const SingleExperience = ({
   content,
   side,
+  className,
 }: {
   content: ExperienceDataType;
   side: "LEFT" | "RIGHT";
+  className?: string;
 }) => (
-  <div className={cn("flex gap-6", side === "LEFT" && "flex-row-reverse")}>
+  <div
+    className={cn(
+      "flex gap-6",
+      side === "LEFT" && "flex-row-reverse",
+      className
+    )}
+  >
     <img
       src={side === "RIGHT" ? TimelineBranchRightSvg : TimelineBranchLeftSvg}
       className="w-10 h-auto self-start"
