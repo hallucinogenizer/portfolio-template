@@ -20,11 +20,13 @@ const SectionHeading = () => (
   </h1>
 );
 
-const SkillCards = () => <div className='grid grid-cols-3 gap-6'>
+const SkillCards = () => (
+  <div className="grid grid-cols-3 gap-6">
     <SkillCard />
     <SkillCard />
     <SkillCard />
     <SkillCard />
     <SkillCard />
     <SkillCard />
-</div>
+  </div>
+);
