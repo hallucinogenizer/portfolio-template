@@ -2,6 +2,8 @@ import BackgroundStarsImage from "../../assets/bg-stars.png";
 import { SectionHeading } from "../common/SectionHeading";
 import SkillCard from "./SkillCard";
 import { skillsData } from "./skills";
+import { Fade } from "react-awesome-reveal";
+
 export default function MyExpertiseSection() {
   return (
     <div
@@ -17,7 +19,9 @@ export default function MyExpertiseSection() {
 const SkillCards = () => (
   <div className="grid grid-cols-3 gap-6">
     {skillsData.map((skill) => (
-      <SkillCard content={skill} />
+      <Fade direction="up" damping={0.25} duration={500} triggerOnce>
+        <SkillCard content={skill} />
+      </Fade>
     ))}
   </div>
 );

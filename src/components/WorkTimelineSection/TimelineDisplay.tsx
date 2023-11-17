@@ -3,6 +3,7 @@ import TimelineBranchLeftSvg from "../../assets/timelineBranchLeft.svg";
 import ExperienceCard from "./ExperienceCard";
 import { ExperienceDataType, experienceData } from "./experienceData";
 import { cn } from "../../lib/utils/cn";
+import { Fade } from "react-awesome-reveal";
 
 export default function TimelineDisplay() {
   return (
@@ -50,17 +51,19 @@ const SingleExperience = ({
   side: "LEFT" | "RIGHT";
   className?: string;
 }) => (
-  <div
-    className={cn(
-      "flex gap-6",
-      side === "LEFT" && "flex-row-reverse",
-      className
-    )}
-  >
-    <img
-      src={side === "RIGHT" ? TimelineBranchRightSvg : TimelineBranchLeftSvg}
-      className="w-10 h-auto self-start"
-    />
-    <ExperienceCard content={content} side={side} />
-  </div>
+  <Fade direction="up" damping={0.25} duration={500} triggerOnce>
+    <div
+      className={cn(
+        "flex gap-6",
+        side === "LEFT" && "flex-row-reverse",
+        className
+      )}
+    >
+      <img
+        src={side === "RIGHT" ? TimelineBranchRightSvg : TimelineBranchLeftSvg}
+        className="w-10 h-auto self-start"
+      />
+      <ExperienceCard content={content} side={side} />
+    </div>
+  </Fade>
 );
