@@ -51,7 +51,7 @@ const SingleExperience = ({
   side: "LEFT" | "RIGHT";
   className?: string;
 }) => (
-  <Fade direction="up" damping={0.25} duration={500} triggerOnce>
+  <Fade direction="up" triggerOnce>
     <div
       className={cn(
         "flex gap-6",

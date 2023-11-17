@@ -18,8 +18,8 @@ export default function MyExpertiseSection() {
 
 const SkillCards = () => (
   <div className="grid grid-cols-3 gap-6">
-    {skillsData.map((skill) => (
-      <Fade direction="up" damping={0.25} duration={500} triggerOnce>
+    {skillsData.map((skill, i) => (
+      <Fade direction="up" delay={150 * i} triggerOnce>
         <SkillCard content={skill} />
       </Fade>
     ))}
