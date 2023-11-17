@@ -1,3 +1,9 @@
+# How to run
+
+1. Install `pnpm`
+2. Run `pnpm install`
+3. Run `pnpm run dev`
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
