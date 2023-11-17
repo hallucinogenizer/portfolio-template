@@ -2,6 +2,7 @@ import { HeroSection } from "./components/HeroSection/HeroSection";
 import MyExpertiseSection from "./components/MyExpertiseSection/MyExpertiseSection";
 import { TopNavBar } from "./components/TopNavBar/TopNavBar";
 import WorkTimelineSection from "./components/WorkTimelineSection/WorkTimelineSection";
+import "./App.css";
 
 function App() {
   return (

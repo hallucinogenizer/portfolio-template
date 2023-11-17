@@ -1,4 +1,5 @@
 import BackgroundStarsImage from "../../assets/bg-stars.png";
+import { EXPERTISE_SECTION_ID } from "../../lib/constants";
 import { SectionHeading } from "../common/SectionHeading";
 import SkillCard from "./SkillCard";
 import { skillsData } from "./skills";
@@ -9,6 +10,7 @@ export default function MyExpertiseSection() {
     <div
       className="px-36 flex flex-col gap-16 bg-right-top bg-no-repeat"
       style={{ backgroundImage: `url("${BackgroundStarsImage}")` }}
+      id={EXPERTISE_SECTION_ID}
     >
       <SectionHeading title={["My", "Expertise"]} />
       <SkillCards />
