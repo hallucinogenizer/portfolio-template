@@ -1,5 +1,6 @@
 import BackgroundStarsImage from "../../assets/bg-stars.png";
-import { EXPERTISE_SECTION_ID } from "../../lib/constants";
+import { EXPERTISE_SECTION_ID, HORIZONTAL_PADDING } from "../../lib/constants";
+import { cn } from "../../lib/utils/cn";
 import { SectionHeading } from "../common/SectionHeading";
 import SkillCard from "./SkillCard";
 import { skillsData } from "./skills";
@@ -8,7 +9,10 @@ import { Fade } from "react-awesome-reveal";
 export default function MyExpertiseSection() {
   return (
     <div
-      className="px-36 flex flex-col gap-16 bg-right-top bg-no-repeat"
+      className={cn(
+        "flex flex-col gap-16 bg-right-top bg-no-repeat",
+        HORIZONTAL_PADDING
+      )}
       style={{ backgroundImage: `url("${BackgroundStarsImage}")` }}
       id={EXPERTISE_SECTION_ID}
     >

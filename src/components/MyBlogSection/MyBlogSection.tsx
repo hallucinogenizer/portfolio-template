@@ -1,9 +1,11 @@
+import { HORIZONTAL_PADDING } from "../../lib/constants";
+import { cn } from "../../lib/utils/cn";
 import { SectionHeading } from "../common/SectionHeading";
 import BlogPostCard from "./BlogPostCard";
 
 export default function MyBlogSection() {
   return (
-    <div className="px-36 flex flex-col gap-16">
+    <div className={cn("flex flex-col gap-16", HORIZONTAL_PADDING)}>
       <SectionHeading title={["My", "Blog"]} />
 
       <div className="grid grid-cols-3" style={{ gap: "4.375rem" }}>

@@ -1,20 +1,38 @@
-import { useState } from "react";
 import { SectionHeading } from "../common/SectionHeading";
 import {
   BackgroundBlurredCircle,
   BgCircleVariant,
 } from "../common/BackgroundBlurredCircle";
 import TestimonialCards from "./TestimonialCards";
+import { TestimonialSliderArrows } from "./SliderArrows";
+import { useState } from "react";
+import {
+  HORIZONTAL_PADDING,
+  TESTIMONIALS_SECTION_ID,
+} from "../../lib/constants";
+import { cn } from "../../lib/utils/cn";
 
 export default function TestimonialsSection() {
+  const [testimonialsToDisplayRange, setTestimonialsToDisplayRange] = useState<
+    [number, number]
+  >([0, 3]);
+
   return (
-    <div className="relative px-36">
+    <div
+      className={cn("relative", HORIZONTAL_PADDING)}
+      id={TESTIMONIALS_SECTION_ID}
+    >
       <div className="flex flex-col gap-16 relative z-10">
         <div className="flex justify-between items-center">
           <SectionHeading title={["My", "Testimonials"]} />
-          <TestimonialSliderArrows />
+          <TestimonialSliderArrows
+            testimonialsToDisplayRange={testimonialsToDisplayRange}
+            setTestimonialsToDisplayRange={setTestimonialsToDisplayRange}
+          />
         </div>
-        <TestimonialCards />
+        <TestimonialCards
+          testimonialsToDisplayRange={testimonialsToDisplayRange}
+        />
       </div>
 
       <BackgroundBlurredCircle
@@ -28,37 +46,3 @@ export default function TestimonialsSection() {
     </div>
   );
 }
-
-const TestimonialSliderArrows = () => (
-  <div className="flex gap-8">
-    <EncircledArrowButton direction="LEFT" />
-    <EncircledArrowButton direction="RIGHT" />
-  </div>
-);
-
-const EncircledArrowButton = ({
-  direction,
-}: {
-  direction: "LEFT" | "RIGHT";
-}) => {
-  const [isHovered, setIsHovered] = useState(false);
-
-  return (
-    <button
-      className="bg-white/10 rounded-full w-16 h-16 relative"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <div className="relative z-10">
-        <i
-          className={`fa-solid fa-lg text-light ${
-            direction === "LEFT" ? "fa-chevron-left" : "fa-chevron-right"
-          }`}
-        ></i>
-      </div>
-      {isHovered && (
-        <div className="w-16 h-16 bg-sky-900 rounded-full blur-lg absolute z-0 top-0 left-0" />
-      )}
-    </button>
-  );
-};

@@ -4,6 +4,7 @@ import {
   CONTACT_SECTION_ID,
   EXPERTISE_SECTION_ID,
   HERO_SECTION_ID,
+  TESTIMONIALS_SECTION_ID,
   WORK_EXPERIENCE_SECTION_ID,
 } from "../../lib/constants";
 
@@ -11,10 +12,14 @@ export const TopNavBar = () => (
   <div className="absolute top-6 right-1/2 w-5/6 max-w-6xl h-12 z-20">
     <ul className="relative -right-1/2 list-none px-8 py-3 bg-slate-900 bg-opacity-90 shadow flex justify-between leading-tight text-neutral-300">
       <li className="text-base ">Logo</li>
-      <div className="text-sm flex basis-96 justify-evenly">
+      <div className="text-sm flex gap-6 justify-evenly">
         <MenuItem text="Home" sectionIdToGoTo={HERO_SECTION_ID} />
         <MenuItem text="Expertise" sectionIdToGoTo={EXPERTISE_SECTION_ID} />
         <MenuItem text="Work" sectionIdToGoTo={WORK_EXPERIENCE_SECTION_ID} />
+        <MenuItem
+          text="Testimonials"
+          sectionIdToGoTo={TESTIMONIALS_SECTION_ID}
+        />
         <MenuItem text="Contact" sectionIdToGoTo={CONTACT_SECTION_ID} />
       </div>
     </ul>

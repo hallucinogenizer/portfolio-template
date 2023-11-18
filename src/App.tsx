@@ -9,7 +9,7 @@ import ContactSection from "./components/ContactSection/ContactSection";
 
 function App() {
   return (
-    <div className="bg-slate-950 w-full min-h-screen py-6 flex flex-col gap-20">
+    <div className="bg-slate-950 w-full overflow-x-clip min-h-screen py-6 flex flex-col gap-20">
       <TopNavBar />
       <HeroSection />
       <MyExpertiseSection />
