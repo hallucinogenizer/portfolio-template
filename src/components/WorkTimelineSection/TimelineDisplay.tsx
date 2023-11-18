@@ -4,6 +4,7 @@ import ExperienceCard from "./ExperienceCard";
 import { ExperienceDataType, experienceData } from "./experienceData";
 import { cn } from "../../lib/utils/cn";
 import { Fade } from "react-awesome-reveal";
+import { HOVER_TRANSLATE_CLASSES } from "../../lib/constants";
 
 export default function TimelineDisplay() {
   return (
@@ -54,7 +55,7 @@ const SingleExperience = ({
   <Fade direction="up" triggerOnce>
     <div
       className={cn(
-        "flex gap-6",
+        `flex gap-6 ${HOVER_TRANSLATE_CLASSES}`,
         side === "LEFT" && "flex-row-reverse",
         className
       )}

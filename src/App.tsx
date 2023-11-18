@@ -5,6 +5,7 @@ import WorkTimelineSection from "./components/WorkTimelineSection/WorkTimelineSe
 import "./App.css";
 import TestimonialsSection from "./components/TestimonialsSection/TestimonialsSection";
 import MyBlogSection from "./components/MyBlogSection/MyBlogSection";
+import ContactSection from "./components/ContactSection/ContactSection";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <WorkTimelineSection />
       <TestimonialsSection />
       <MyBlogSection />
+      <ContactSection />
     </div>
   );
 }

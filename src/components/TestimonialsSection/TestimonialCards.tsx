@@ -1,4 +1,5 @@
 import TestimonialProfilePicture from "../../assets/testomonial-profile-picture.png";
+import { HOVER_TRANSLATE_CLASSES } from "../../lib/constants";
 
 export default function TestimonialCards() {
   return (
@@ -12,7 +13,7 @@ export default function TestimonialCards() {
 
 const TestimonialCard = () => (
   <div
-    className="bg-zinc-400 bg-opacity-20 shadow flex flex-col gap-4 p-6"
+    className={`bg-zinc-400 bg-opacity-20 shadow flex flex-col gap-4 p-6 ${HOVER_TRANSLATE_CLASSES}`}
     style={{ width: "21.625rem" }}
   >
     <div>

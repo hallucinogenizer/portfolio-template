@@ -1,3 +1,4 @@
+import { HOVER_TRANSLATE_CLASSES } from "../../lib/constants";
 import { cn } from "../../lib/utils/cn";
 import { SkillType } from "./skills";
 
@@ -7,7 +8,7 @@ export default function SkillCard({ content }: { content: SkillType }) {
       className={cn(
         "w-96 bg-white/10 rounded-lg p-8 text-light",
         "flex flex-col gap-4",
-        "hover:bg-white/20 hover:scale-105 transition-transform ease-in"
+        HOVER_TRANSLATE_CLASSES
       )}
       style={{ minHeight: "15rem" }}
     >

@@ -5,6 +5,7 @@ import GitHubIcon from "../../assets/github.svg";
 import LinkedInIcon from "../../assets/linkedin.svg";
 import FacebookIcon from "../../assets/facebook.svg";
 import TwitterIcon from "../../assets/twitter.svg";
+import { SocialLinkBox } from "../common/SocialLinkBox";
 
 export const TextContent = () => (
   <div className="flex flex-col gap-2">
@@ -62,17 +63,9 @@ const DownloadResume = ({ className }: { className?: string }) => (
 
 const SocialIcons = ({ className }: { className?: string }) => (
   <div className={cn("flex gap-6", className)}>
-    <div className="w-10 h-10 bg-gradient-to-b from-white/20 to-white/10 hover:to-white/20 cursor-pointer rounded-full flex justify-center items-center">
-      <img src={GitHubIcon} width={24} className="w-6 h-auto" />
-    </div>
-    <div className="w-10 h-10 bg-gradient-to-b from-white/20 to-white/10 hover:to-white/20 cursor-pointer rounded-full flex justify-center items-center">
-      <img src={LinkedInIcon} width={24} className="w-6 h-auto" />
-    </div>
-    <div className="w-10 h-10 bg-gradient-to-b from-white/20 to-white/10 hover:to-white/20 cursor-pointer rounded-full flex justify-center items-center">
-      <img src={FacebookIcon} width={24} className="w-6 h-auto" />
-    </div>
-    <div className="w-10 h-10 bg-gradient-to-b from-white/20 to-white/10 hover:to-white/20 cursor-pointer rounded-full flex justify-center items-center">
-      <img src={TwitterIcon} width={24} className="w-6 h-auto" />
-    </div>
+    <SocialLinkBox iconClassNames="fa-solid fa-phone" />
+    <SocialLinkBox iconClassNames="fa-regular fa-envelope" />
+    <SocialLinkBox iconClassNames="fa-brands fa-github" />
+    <SocialLinkBox iconClassNames="fa-brands fa-linkedin-in" />
   </div>
 );

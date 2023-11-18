@@ -1,7 +1,9 @@
+import { HOVER_TRANSLATE_CLASSES } from "../../lib/constants";
+
 export default function BlogPostCard() {
   return (
     <div
-      className="bg-zinc-300/10 rounded-lg text-light"
+      className={`bg-zinc-300/10 rounded-lg text-light ${HOVER_TRANSLATE_CLASSES}`}
       style={{ width: "21.25rem", height: "27rem" }}
     >
       {/* Thumbnail */}
