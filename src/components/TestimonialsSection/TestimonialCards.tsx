@@ -13,7 +13,7 @@ export default function TestimonialCards({
   testimonialsToDisplayRange: [number, number];
 }) {
   return (
-    <div className="grid grid-cols-3 gap-16">
+    <div className="flex flex-wrap justify-center gap-16">
       {testimonialsData
         .slice(testimonialsToDisplayRange[0], testimonialsToDisplayRange[1])
         .map((testimonialData) => (

@@ -11,11 +11,14 @@ import {
   TESTIMONIALS_SECTION_ID,
 } from "../../lib/constants";
 import { cn } from "../../lib/utils/cn";
+import { testimonialsData } from "./testimonialsData";
+
+const MAX_SLIDES_TO_SHOW = 3;
 
 export default function TestimonialsSection() {
   const [testimonialsToDisplayRange, setTestimonialsToDisplayRange] = useState<
     [number, number]
-  >([0, 3]);
+  >([0, MAX_SLIDES_TO_SHOW]);
 
   return (
     <div
@@ -25,10 +28,12 @@ export default function TestimonialsSection() {
       <div className="flex flex-col gap-16 relative z-10">
         <div className="flex justify-between items-center">
           <SectionHeading title={["My", "Testimonials"]} />
-          <TestimonialSliderArrows
-            testimonialsToDisplayRange={testimonialsToDisplayRange}
-            setTestimonialsToDisplayRange={setTestimonialsToDisplayRange}
-          />
+          {testimonialsData.length > MAX_SLIDES_TO_SHOW && (
+            <TestimonialSliderArrows
+              testimonialsToDisplayRange={testimonialsToDisplayRange}
+              setTestimonialsToDisplayRange={setTestimonialsToDisplayRange}
+            />
+          )}
         </div>
         <TestimonialCards
           testimonialsToDisplayRange={testimonialsToDisplayRange}
