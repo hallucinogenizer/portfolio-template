@@ -11,10 +11,9 @@ export default function ExperienceCard({
   return (
     <div
       className={cn(
-        "flex flex-col gap-4 pt-16",
+        "flex flex-col gap-4 pt-16 md:max-w-[30rem] max-w-none",
         side === "LEFT" && "items-end text-right"
       )}
-      style={{ maxWidth: "30rem" }}
     >
       <p className="text-neutral-300 text-base font-normal leading-loose">
         {content.date}

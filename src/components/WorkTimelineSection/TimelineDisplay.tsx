@@ -5,20 +5,23 @@ import { ExperienceDataType, experienceData } from "./experienceData";
 import { cn } from "../../lib/utils/cn";
 import { Fade } from "react-awesome-reveal";
 import { HOVER_TRANSLATE_CLASSES } from "../../lib/constants";
+import useWindowDimensions from "../../lib/hooks/useWindowDimensions";
 
 export default function TimelineDisplay() {
+  const { width } = useWindowDimensions();
+
   return (
     <div className="flex text-light h-full">
       {/* left half of screen */}
       <div
-        className="h-full flex flex-col justify-start items-end pt-12"
+        className="h-full hidden md:flex flex-col justify-start items-end pt-12"
         style={{ flexBasis: "calc(50% - 0.375rem)" }}
       >
         {experienceData.map((experienceContent, i) => (
           <SingleExperience
             content={experienceContent}
             side="LEFT"
-            className={i % 2 === 0 ? "invisible" : ""}
+            className={i % 2 === 0 ? "invisible" : "visible"}
           />
         ))}
       </div>
@@ -27,15 +30,12 @@ export default function TimelineDisplay() {
       <div className="w-1.5 min-h-max bg-gradient-to-b from-neutral-900/60 via-20% via-cyan-500/60 to-neutral-900/60" />
 
       {/* right half of screen */}
-      <div
-        className="h-full flex flex-col justify-start items-start pt-12"
-        style={{ flexBasis: "calc(50% - 0.375rem)" }}
-      >
+      <div className="h-full flex flex-col justify-start items-start pt-12 md:basis-[calc(50%-0.375rem)]">
         {experienceData.map((experienceContent, i) => (
           <SingleExperience
             content={experienceContent}
             side="RIGHT"
-            className={i % 2 !== 0 ? "invisible" : ""}
+            className={cn(i % 2 !== 0 && width >= 786 ? "invisible" : "")}
           />
         ))}
       </div>
