@@ -16,7 +16,10 @@ export const TextContent = ({ className }: { className: string }) => (
 const Hello = ({ className }: ClassNameProp) => (
   <div className={cn("inline-flex items-center gap-4", className)}>
     <ShortLine />{" "}
-    <p className="text-stone-300 text-2xl leading-loose font-['Roboto Mono']">
+    <p
+      className="text-stone-300 text-2xl leading-loose"
+      style={{ fontFamily: "Roboto Mono" }}
+    >
       Hello!
     </p>
   </div>
@@ -39,7 +42,10 @@ const PersonName = ({ className }: ClassNameProp) => (
 const ProfessionalTitles = () => {
   const [currentTitle, setCurrentTitle] = useState("Software Engineer");
   return (
-    <h3 className="text-3xl font-medium font-['Roboto Mono'] leading-10 tracking-widest">
+    <h3
+      className="text-3xl font-medium leading-10 tracking-widest"
+      style={{ fontFamily: "Roboto Mono" }}
+    >
       <span className="text-stone-300">I'm a </span>
       <span className="text-teal-500">{currentTitle}</span>
     </h3>

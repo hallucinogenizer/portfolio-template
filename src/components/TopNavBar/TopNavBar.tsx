@@ -36,7 +36,7 @@ const MenuItem = ({
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <a href={`#${sectionIdToGoTo}`}>
+    <a href={`#${sectionIdToGoTo}`} className="hover:font-semibold">
       <li
         className="flex items-center gap-2 cursor-pointer"
         onMouseEnter={() => setIsHovered(true)}

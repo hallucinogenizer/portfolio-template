@@ -18,7 +18,10 @@ export default function SkillCard({ content }: { content: SkillType }) {
         </div>
         <div className="bg-cyan-500/50 absolute blur-md rounded-full w-12 h-12 top-0 left-0"></div>
       </div>
-      <h3 className="text-neutral-300 text-lg font-medium font-['Roboto Mono'] leading-relaxed">
+      <h3
+        className="text-neutral-300 text-lg font-medium leading-relaxed"
+        style={{ fontFamily: "Roboto Mono" }}
+      >
         {content.title}
       </h3>
       <p className="text-stone-300 text-base font-normal font-['Segoe UI'] leading-loose">

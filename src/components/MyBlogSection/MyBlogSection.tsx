@@ -8,7 +8,10 @@ export default function MyBlogSection() {
     <div className={cn("flex flex-col gap-16", HORIZONTAL_PADDING)}>
       <SectionHeading title={["My", "Blog"]} />
 
-      <div className="grid grid-cols-3" style={{ gap: "4.375rem" }}>
+      <div
+        className="flex flex-wrap gap-12 justify-center"
+        style={{ gap: "4.375rem" }}
+      >
         <BlogPostCard />
         <BlogPostCard />
         <BlogPostCard />

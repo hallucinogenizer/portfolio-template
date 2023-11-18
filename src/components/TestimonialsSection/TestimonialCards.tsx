@@ -42,7 +42,10 @@ const TestominialPersonProfile = ({ content }: { content: PersonType }) => (
   <div className="flex gap-4">
     <img src={content.image} className="rounded-full object-fill w-16 h-16" />
     <div className="flex flex-col gap-1">
-      <h5 className="text-light text-lg font-medium font-['Roboto Mono'] leading-relaxed">
+      <h5
+        className="text-light text-lg font-medium leading-relaxed"
+        style={{ fontFamily: "Roboto Mono" }}
+      >
         {content.name}
       </h5>
       <p className="text-stone-300 text-sm font-normal capitalize leading-tight">

@@ -64,7 +64,7 @@ const SingleExperience = ({
         src={side === "RIGHT" ? TimelineBranchRightSvg : TimelineBranchLeftSvg}
         className="w-10 h-auto self-start"
       />
-      <ExperienceCard content={content} side={side} />
+      <ExperienceCard content={content} />
     </div>
   </Fade>
 );
