@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { cn } from "../../lib/utils/cn";
 import {
+  CONTACT_SECTION_ID,
   EXPERTISE_SECTION_ID,
   HERO_SECTION_ID,
   WORK_EXPERIENCE_SECTION_ID,
@@ -14,7 +15,7 @@ export const TopNavBar = () => (
         <MenuItem text="Home" sectionIdToGoTo={HERO_SECTION_ID} />
         <MenuItem text="Expertise" sectionIdToGoTo={EXPERTISE_SECTION_ID} />
         <MenuItem text="Work" sectionIdToGoTo={WORK_EXPERIENCE_SECTION_ID} />
-        <MenuItem text="Contact" />
+        <MenuItem text="Contact" sectionIdToGoTo={CONTACT_SECTION_ID} />
       </div>
     </ul>
   </div>

@@ -1,3 +1,4 @@
+import { Fade } from "react-awesome-reveal";
 import TestimonialProfilePicture from "../../assets/testomonial-profile-picture.png";
 import { HOVER_TRANSLATE_CLASSES } from "../../lib/constants";
 
@@ -12,20 +13,22 @@ export default function TestimonialCards() {
 }
 
 const TestimonialCard = () => (
-  <div
-    className={`bg-zinc-400 bg-opacity-20 shadow flex flex-col gap-4 p-6 ${HOVER_TRANSLATE_CLASSES}`}
-    style={{ width: "21.625rem" }}
-  >
-    <div>
-      <i className="fa-solid fa-quote-left fa-2xl text-teal-500"></i>
+  <Fade direction="up" triggerOnce>
+    <div
+      className={`bg-zinc-400 bg-opacity-20 shadow flex flex-col gap-4 p-6 ${HOVER_TRANSLATE_CLASSES}`}
+      style={{ width: "21.625rem" }}
+    >
+      <div>
+        <i className="fa-solid fa-quote-left fa-2xl text-teal-500"></i>
+      </div>
+      <p className="text-light leading-loose">
+        Lorem ipsum dolor sit amet consectetur. Id faucibus sollicitudin
+        faucibus lectus placerat. Dui pellentesque justo at elit faucibus
+        pellentesque. Pulvinar et non arcu vel.
+      </p>
+      <TestominialPersonProfile />
     </div>
-    <p className="text-light leading-loose">
-      Lorem ipsum dolor sit amet consectetur. Id faucibus sollicitudin faucibus
-      lectus placerat. Dui pellentesque justo at elit faucibus pellentesque.
-      Pulvinar et non arcu vel.
-    </p>
-    <TestominialPersonProfile />
-  </div>
+  </Fade>
 );
 
 const TestominialPersonProfile = () => (
