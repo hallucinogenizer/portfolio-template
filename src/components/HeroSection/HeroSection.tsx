@@ -25,11 +25,11 @@ export function HeroSection() {
 
       <div
         className={cn(
-          "pt-52 flex justify-between relative z-10",
+          "pt-24 md:pt-52 flex gap-4 md:flex-row flex-col-reverse justify-between relative z-10",
           HORIZONTAL_PADDING
         )}
       >
-        <TextContent />
+        <TextContent className="flex-shrink" />
         <PersonImage />
       </div>
     </div>

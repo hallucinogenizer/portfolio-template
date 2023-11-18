@@ -23,7 +23,7 @@ export default function MyExpertiseSection() {
 }
 
 const SkillCards = () => (
-  <div className="grid grid-cols-3 gap-6">
+  <div className="flex flex-wrap gap-6 justify-center">
     {skillsData.map((skill, i) => (
       <Fade direction="up" delay={50 * i} triggerOnce>
         <SkillCard content={skill} />

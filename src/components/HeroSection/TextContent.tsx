@@ -1,14 +1,10 @@
 import { useState } from "react";
 import { ClassNameProp } from "../../lib/utils/utils";
 import { cn } from "../../lib/utils/cn";
-import GitHubIcon from "../../assets/github.svg";
-import LinkedInIcon from "../../assets/linkedin.svg";
-import FacebookIcon from "../../assets/facebook.svg";
-import TwitterIcon from "../../assets/twitter.svg";
 import { SocialLinkBox } from "../common/SocialLinkBox";
 
-export const TextContent = () => (
-  <div className="flex flex-col gap-2">
+export const TextContent = ({ className }: { className: string }) => (
+  <div className={cn("flex flex-col gap-2", className)}>
     <Hello className="mb-4" />
     <PersonName className="mb-2" />
     <ProfessionalTitles />
@@ -32,7 +28,7 @@ const ShortLine = () => (
 const PersonName = ({ className }: ClassNameProp) => (
   <h1
     className={cn(
-      "text-light text-6xl font-bold font-['Poppins'] uppercase leading-10",
+      "text-light text-6xl font-bold font-['Poppins'] uppercase leading-none",
       className
     )}
   >
