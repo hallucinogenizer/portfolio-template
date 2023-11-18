@@ -26,7 +26,7 @@ export default function TestimonialCards({
 const TestimonialCard = ({ content }: { content: TestimonialDataType }) => (
   <Fade direction="up" triggerOnce>
     <div
-      className={`bg-zinc-400 bg-opacity-20 shadow flex flex-col gap-4 p-6 ${HOVER_TRANSLATE_CLASSES}`}
+      className={`bg-zinc-400 bg-opacity-20 shadow flex flex-col gap-4 p-6 rounded-lg ${HOVER_TRANSLATE_CLASSES}`}
       style={{ width: "21.625rem" }}
     >
       <div>
