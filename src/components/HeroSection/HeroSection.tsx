@@ -3,7 +3,7 @@ import { cn } from "../../lib/utils/cn";
 import {
   BackgroundBlurredCircle,
   BgCircleVariant,
-} from "./BackgroundBlurredCircle";
+} from "../common/BackgroundBlurredCircle";
 import { PersonImage } from "./PersonImage";
 import { TextContent } from "./TextContent";
 
@@ -14,8 +14,14 @@ export function HeroSection() {
       style={{ minHeight: "42rem" }}
       id={HERO_SECTION_ID}
     >
-      <BackgroundBlurredCircle variant={BgCircleVariant.ONE} />
-      <BackgroundBlurredCircle variant={BgCircleVariant.TWO} />
+      <BackgroundBlurredCircle
+        variant={BgCircleVariant.ONE}
+        className="left-16"
+      />
+      <BackgroundBlurredCircle
+        variant={BgCircleVariant.TWO}
+        className="right-0 bottom-0"
+      />
 
       <div
         className={cn(
