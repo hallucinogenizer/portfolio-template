@@ -10,7 +10,7 @@ export default function BlogPostCard({ content }: { content: BlogDataType }) {
     <a href="#" style={{ height: "28rem" }}>
       <div
         className={`bg-zinc-300/10 rounded-lg text-light transition-all`}
-        style={{ width: "21.25rem", height: isHovered ? "28rem" : "27rem" }}
+        style={{ width: "21.25rem", height: isHovered ? "28.5rem" : "27rem" }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -25,10 +25,10 @@ export default function BlogPostCard({ content }: { content: BlogDataType }) {
           ></div>
         </div>
 
-        <div className="flex flex-col justify-between px-6">
-          <div className="flex flex-col gap-3 py-6 flex-grow max-h-44">
+        <div className="flex flex-col justify-between px-6 h-52">
+          <div className="flex flex-col gap-3 py-6 flex-grow max-h-52">
             <h4
-              className="font-medium tracking-tight leading-none"
+              className="font-medium tracking-tight leading-none line-clamp-3 text-ellipsis"
               style={{ fontFamily: "Roboto Mono" }}
             >
               {content.title}
