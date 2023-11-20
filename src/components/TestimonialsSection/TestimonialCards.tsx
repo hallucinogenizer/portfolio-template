@@ -26,13 +26,17 @@ export default function TestimonialCards({
 const TestimonialCard = ({ content }: { content: TestimonialDataType }) => (
   <Fade direction="up" triggerOnce>
     <div
-      className={`bg-zinc-400 bg-opacity-20 shadow flex flex-col gap-4 p-6 rounded-lg ${HOVER_TRANSLATE_CLASSES}`}
-      style={{ width: "21.625rem" }}
+      className={`bg-zinc-400 bg-opacity-20 flex flex-col justify-around shadow p-6 rounded-lg ${HOVER_TRANSLATE_CLASSES}`}
+      style={{ width: "21.625rem", height: "22.375rem" }}
     >
-      <div>
-        <i className="fa-solid fa-quote-left fa-2xl text-teal-500"></i>
+      <div className="flex flex-col gap-4">
+        <div>
+          <i className="fa-solid fa-quote-left fa-2xl text-teal-500"></i>
+        </div>
+        <p className="text-light text-justify leading-tight overflow-ellipsis line-clamp-[7]">
+          {content.quote}
+        </p>
       </div>
-      <p className="text-light leading-loose">{content.quote}</p>
       <TestominialPersonProfile content={content.person} />
     </div>
   </Fade>

@@ -2,6 +2,7 @@ import { HORIZONTAL_PADDING } from "../../lib/constants";
 import { cn } from "../../lib/utils/cn";
 import { SectionHeading } from "../common/SectionHeading";
 import BlogPostCard from "./BlogPostCard";
+import { blogsData } from "./blogData";
 
 export default function MyBlogSection() {
   return (
@@ -12,9 +13,9 @@ export default function MyBlogSection() {
         className="flex flex-wrap gap-12 justify-center"
         style={{ gap: "4.375rem" }}
       >
-        <BlogPostCard />
-        <BlogPostCard />
-        <BlogPostCard />
+        {blogsData.slice(0, 3).map((blogData) => (
+          <BlogPostCard content={blogData} />
+        ))}
       </div>
     </div>
   );

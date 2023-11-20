@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { cn } from "../../lib/utils/cn";
-import BlogPostCoverImage from "../../assets/blog-post-cover.gif";
 
-export default function BlogPostCard() {
+import { BlogDataType } from "./blogData";
+
+export default function BlogPostCard({ content }: { content: BlogDataType }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -15,7 +16,7 @@ export default function BlogPostCard() {
       >
         {/* Thumbnail */}
         <div className="relative w-full h-56 flex justify-center items-center bg-cyan-400/10 overflow-clip">
-          <img src={BlogPostCoverImage} className="relative z-10 max-h-52" />
+          <img src={content.thumbnail} className="relative z-10 max-h-52" />
           <div
             className={cn(
               "absolute z-0 w-36 h-36 rounded-full blur-lg bg-cyan-500/20 transition-all",
@@ -24,24 +25,24 @@ export default function BlogPostCard() {
           ></div>
         </div>
 
-        <div className="flex flex-col gap-3 p-6">
-          <h4
-            className="font-medium leading-7 tracking-tight"
-            style={{ fontFamily: "Roboto Mono" }}
-          >
-            CS200 Tutorial
-          </h4>
-          <div className="flex gap-2">
-            <div className="w-px h-6 origin-top-left border border-cyan-500"></div>
-            <p>January 2021</p>
+        <div className="flex flex-col justify-between px-6">
+          <div className="flex flex-col gap-3 py-6 flex-grow max-h-44">
+            <h4
+              className="font-medium tracking-tight leading-none"
+              style={{ fontFamily: "Roboto Mono" }}
+            >
+              {content.title}
+            </h4>
+            <div className="flex gap-2">
+              <div className="w-px h-6 origin-top-left border border-cyan-500"></div>
+              <p>{content.datePosted}</p>
+            </div>
+            <p className="text-sm leading-tight text-ellipsis line-clamp-3">
+              {content.description}
+            </p>
           </div>
-          <p className="text-sm leading-tight">
-            Lorem ipsum dolor sit amet consectetur. Id faucibus sollicitudin
-            faucibus lectus placerat. Dui pellentesque justo at elit faucibus
-            pellentesque. Pulvinar et non arcu vel.
-          </p>
           <a
-            href="#"
+            href={content.link}
             className={cn(
               isHovered ? "block" : "hidden",
               "text-teal-500 text-sm font-medium font-['Roboto Mono'] leading-tight"

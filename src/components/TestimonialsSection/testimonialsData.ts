@@ -1,4 +1,5 @@
 import QuotePersonImage from "../../assets/testomonial-profile-picture.png";
+import WasiqDp from "../../assets/custom/wasiq.jpeg";
 
 export type PersonType = {
   name: string;
@@ -14,11 +15,11 @@ export type TestimonialDataType = {
 export const testimonialsData: TestimonialDataType[] = [
   {
     quote:
-      "Lorem ipsum dolor sit amet consectetur. Id faucibus sollicitudin faucibus lectus placerat. Dui pellentesque justo at elit faucibus pellentesque. Pulvinar et non arcu vel.",
+      "I had the pleasure of collaborating with Rohan on a search feature for our platform, and I was thoroughly impressed with his skills as an engineer. Rohan is incredibly intelligent, and responsible, and has a remarkable ability to take ownership and develop products.",
     person: {
-      name: "Arif Lohar",
-      image: QuotePersonImage,
-      title: "Agile Coach | Speaker | Trainer",
+      name: "Wasiq Noor Qasmi",
+      image: WasiqDp,
+      title: "Senior Software Engineer | Mentor",
     },
   },
   {
