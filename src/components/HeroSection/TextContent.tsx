@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ClassNameProp } from "../../lib/utils/utils";
 import { cn } from "../../lib/utils/cn";
 import { SocialLinkBox } from "../common/SocialLinkBox";
+import { personData } from "./personData";
+import Resume from "../../assets/custom/Rohan Hussain.pdf";
+import { HOVER_TRANSLATE_CLASSES } from "../../lib/constants";
 
 export const TextContent = ({ className }: { className: string }) => (
   <div className={cn("flex flex-col gap-2", className)}>
@@ -35,39 +38,65 @@ const PersonName = ({ className }: ClassNameProp) => (
       className
     )}
   >
-    Rohan Hussain
+    {personData.name}
   </h1>
 );
 
 const ProfessionalTitles = () => {
-  const [currentTitle, setCurrentTitle] = useState("Software Engineer");
+  const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentTitleIndex((cur) => (cur + 1) % personData.titles.length);
+    }, 1500);
+
+    // Cleanup the interval when the component unmounts
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
     <h3
       className="text-3xl font-medium leading-10 tracking-widest"
       style={{ fontFamily: "Roboto Mono" }}
     >
       <span className="text-stone-300">I'm a </span>
-      <span className="text-teal-500">{currentTitle}</span>
+      <span className="text-teal-500">
+        {personData.titles[currentTitleIndex]}
+      </span>
     </h3>
   );
 };
 
 const DownloadResume = ({ className }: { className?: string }) => (
-  <button
+  <a
     className={cn(
-      "w-44 h-10 bg-gradient-to-b from-white/10 to-transparent hover:to-white/10 rounded text-light",
+      "px-3 py-2 w-fit bg-light rounded",
+      HOVER_TRANSLATE_CLASSES,
       className
     )}
+    href={Resume}
   >
     Download Resume
-  </button>
+  </a>
 );
 
 const SocialIcons = ({ className }: { className?: string }) => (
   <div className={cn("flex gap-6", className)}>
-    <SocialLinkBox iconClassNames="fa-solid fa-phone" />
-    <SocialLinkBox iconClassNames="fa-regular fa-envelope" />
-    <SocialLinkBox iconClassNames="fa-brands fa-github" />
-    <SocialLinkBox iconClassNames="fa-brands fa-linkedin-in" />
+    <SocialLinkBox
+      iconClassNames="fa-solid fa-phone"
+      link={`tel:${personData.phoneNumber}`}
+    />
+    <SocialLinkBox
+      iconClassNames="fa-regular fa-envelope"
+      link={`mailto:${personData.email}`}
+    />
+    <SocialLinkBox
+      iconClassNames="fa-brands fa-github"
+      link={personData.github}
+    />
+    <SocialLinkBox
+      iconClassNames="fa-brands fa-linkedin-in"
+      link={personData.linkedIn}
+    />
   </div>
 );

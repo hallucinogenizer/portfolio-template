@@ -1,12 +1,12 @@
 import { HOVER_TRANSLATE_CLASSES } from "../../lib/constants";
 import { cn } from "../../lib/utils/cn";
-import { SkillType } from "./skills";
+import { SkillType } from "./skillsData";
 
 export default function SkillCard({ content }: { content: SkillType }) {
   return (
     <div
       className={cn(
-        "w-96 bg-white/10 rounded-lg p-8 text-light",
+        "w-96 h-72 bg-white/10 rounded-lg p-8 text-light",
         "flex flex-col gap-4",
         HOVER_TRANSLATE_CLASSES
       )}
@@ -24,7 +24,7 @@ export default function SkillCard({ content }: { content: SkillType }) {
       >
         {content.title}
       </h3>
-      <p className="text-stone-300 text-base font-normal font-['Segoe UI'] leading-loose">
+      <p className="text-stone-300 text-base font-normal font-['Segoe UI'] leading-loose line-clamp-3 overflow-ellipsis">
         {content.description}
       </p>
     </div>

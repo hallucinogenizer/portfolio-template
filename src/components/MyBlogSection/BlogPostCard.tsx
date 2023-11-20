@@ -7,7 +7,7 @@ export default function BlogPostCard({ content }: { content: BlogDataType }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <a href="#" style={{ height: "28rem" }}>
+    <a href={content.link} style={{ height: "28rem" }} target="_blank">
       <div
         className={`bg-zinc-300/10 rounded-lg text-light transition-all`}
         style={{ width: "21.25rem", height: isHovered ? "28.5rem" : "27rem" }}
@@ -16,11 +16,14 @@ export default function BlogPostCard({ content }: { content: BlogDataType }) {
       >
         {/* Thumbnail */}
         <div className="relative w-full h-56 flex justify-center items-center bg-cyan-400/10 overflow-clip">
-          <img src={content.thumbnail} className="relative z-10 max-h-52" />
+          <img
+            src={content.thumbnail}
+            className="relative z-10 max-h-52 max-w-[80%]"
+          />
           <div
             className={cn(
               "absolute z-0 w-36 h-36 rounded-full blur-lg bg-cyan-500/20 transition-all",
-              isHovered && "w-40 h-40 bg-cyan-500/40"
+              isHovered && "w-11/12 h-44 bg-cyan-500/40"
             )}
           ></div>
         </div>
@@ -47,6 +50,7 @@ export default function BlogPostCard({ content }: { content: BlogDataType }) {
               isHovered ? "block" : "hidden",
               "text-teal-500 text-sm font-medium font-['Roboto Mono'] leading-tight"
             )}
+            target="_blank"
           >
             Read More <i className="fa-solid fa-chevron-right" />
           </a>

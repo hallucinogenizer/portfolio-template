@@ -3,7 +3,7 @@ import { EXPERTISE_SECTION_ID, HORIZONTAL_PADDING } from "../../lib/constants";
 import { cn } from "../../lib/utils/cn";
 import { SectionHeading } from "../common/SectionHeading";
 import SkillCard from "./SkillCard";
-import { skillsData } from "./skills";
+import { skillsData } from "./skillsData";
 import { Fade } from "react-awesome-reveal";
 
 export default function MyExpertiseSection() {
