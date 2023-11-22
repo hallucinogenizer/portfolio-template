@@ -1,7 +1,14 @@
-import ProfilePicture from "../../assets/Dp.png";
+import { CSSProperties } from "react";
+import ProfilePicture from "../../assets/custom/my_picture_no_bg.png";
 
-export const PersonImage = () => (
-  <div style={{ maxWidth: "50%" }}>
+export const PersonImage = ({
+  className,
+  style,
+}: {
+  className?: string;
+  style?: CSSProperties;
+}) => (
+  <div className={className} style={style}>
     <img src={ProfilePicture} />
   </div>
 );

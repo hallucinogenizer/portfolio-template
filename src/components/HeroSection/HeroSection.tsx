@@ -15,12 +15,8 @@ export function HeroSection() {
       id={HERO_SECTION_ID}
     >
       <BackgroundBlurredCircle
-        variant={BgCircleVariant.ONE}
+        variant={BgCircleVariant.BLUE}
         className="left-16"
-      />
-      <BackgroundBlurredCircle
-        variant={BgCircleVariant.TWO}
-        className="right-0 bottom-0"
       />
 
       <div
@@ -30,7 +26,14 @@ export function HeroSection() {
         )}
       >
         <TextContent className="flex-shrink" />
-        <PersonImage />
+        <div className="relative">
+          <PersonImage className="absolute z-10 top-0 right-0 md:w-[30rem] md:h-[30rem] w-40 h-40" />
+          <BackgroundBlurredCircle
+            variant={BgCircleVariant.RED}
+            className="right-0 top-0 bg-[#9E2A3D]"
+            style={{ width: "27rem", height: "27rem" }}
+          />
+        </div>
       </div>
     </div>
   );

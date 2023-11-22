@@ -4,7 +4,6 @@ import { cn } from "../../lib/utils/cn";
 import { SocialLinkBox } from "../common/SocialLinkBox";
 import { personData } from "./personData";
 import Resume from "../../assets/custom/Rohan Hussain.pdf";
-import { HOVER_TRANSLATE_CLASSES } from "../../lib/constants";
 
 export const TextContent = ({ className }: { className: string }) => (
   <div className={cn("flex flex-col gap-2", className)}>
@@ -70,8 +69,7 @@ const ProfessionalTitles = () => {
 const DownloadResume = ({ className }: { className?: string }) => (
   <a
     className={cn(
-      "px-3 py-2 w-fit bg-light rounded",
-      HOVER_TRANSLATE_CLASSES,
+      "px-3 py-2 w-fit border border-teal-500 hover:bg-teal-500 text-teal-500 hover:text-white rounded",
       className
     )}
     href={Resume}
