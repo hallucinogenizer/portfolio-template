@@ -70,7 +70,7 @@ const ProfessionalTitles = () => {
 const DownloadResume = ({ className }: { className?: string }) => (
   <a
     className={cn(
-      "px-3 py-2 w-fit bg-light rounded",
+      "px-3 py-2 w-fit border border-teal-500 hover:bg-teal-500 text-teal-500 hover:text-white rounded",
       HOVER_TRANSLATE_CLASSES,
       className
     )}
