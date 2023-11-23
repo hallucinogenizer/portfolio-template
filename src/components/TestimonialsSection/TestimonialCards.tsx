@@ -33,7 +33,7 @@ const TestimonialCard = ({ content }: { content: TestimonialDataType }) => (
       <div>
         <i className="fa-solid fa-quote-left fa-2xl text-teal-500"></i>
       </div>
-      <p className="text-light text-justify leading-tight whitespace-pre-wrap overflow-ellipsis line-clamp-[14]">
+      <p className="text-light md:text-base text-sm text-justify leading-tight whitespace-pre-wrap overflow-ellipsis line-clamp-[14]">
         {content.quote}
       </p>
     </div>
@@ -42,11 +42,11 @@ const TestimonialCard = ({ content }: { content: TestimonialDataType }) => (
 );
 
 const TestominialPersonProfile = ({ content }: { content: PersonType }) => (
-  <div className="flex gap-4">
+  <div className="flex gap-4 items-center">
     <img src={content.image} className="rounded-full object-fill w-16 h-16" />
     <div className="flex flex-col gap-1">
       <h5
-        className="text-light text-lg font-medium leading-relaxed"
+        className="text-light md:text-lg text-base font-medium leading-relaxed"
         style={{ fontFamily: "Roboto Mono" }}
       >
         {content.name}
