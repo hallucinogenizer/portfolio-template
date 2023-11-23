@@ -1,5 +1,6 @@
 import WasiqDp from "../../assets/custom/wasiq.jpeg";
 import DanishDp from "../../assets/custom/danish.jpg";
+import WahabDp from "../../assets/custom/Wahab.jpeg";
 
 export type PersonType = {
   name: string;
@@ -19,7 +20,8 @@ export const testimonialsData: TestimonialDataType[] = [
     person: {
       name: "Wasiq Noor Qasmi",
       image: WasiqDp,
-      title: "Senior Software Engineer | Mentor",
+      title: `Senior Software Engineer, Mentor
+@ Educative`,
     },
   },
   {
@@ -34,12 +36,14 @@ KICKSAT Preparations`,
     },
   },
   {
-    quote:
-      "I had the pleasure of collaborating with Rohan on a search feature for our platform, and I was thoroughly impressed with his skills as an engineer. Rohan is incredibly intelligent, and responsible, and has a remarkable ability to take ownership and develop products.",
+    quote: `Having worked closely with Rohan at IEC and across various projects, I can attest that it's been an incredible journey. Rohan stands out as a well-rounded engineer—an empathetic manager and an exceptional problem solver. His blend of kindness, empathy, and problem-solving skills make him not only a valuable asset but a standout addition to any team. 
+      
+Highly recommended!`,
     person: {
-      name: "Wasiq Noor Qasmi",
-      image: WasiqDp,
-      title: "Senior Software Engineer | Mentor",
+      name: "Abdul Wahab",
+      image: WahabDp,
+      title: `Full Stack Software Engineer
+Coworker at IEC`,
     },
   },
 ];
