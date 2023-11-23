@@ -33,4 +33,13 @@ Rohan's well-rounded understanding of business, coupled with his ownership minds
 KICKSAT Preparations`,
     },
   },
+  {
+    quote:
+      "I had the pleasure of collaborating with Rohan on a search feature for our platform, and I was thoroughly impressed with his skills as an engineer. Rohan is incredibly intelligent, and responsible, and has a remarkable ability to take ownership and develop products.",
+    person: {
+      name: "Wasiq Noor Qasmi",
+      image: WasiqDp,
+      title: "Senior Software Engineer | Mentor",
+    },
+  },
 ];

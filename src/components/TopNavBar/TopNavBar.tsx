@@ -11,9 +11,12 @@ import {
 export const TopNavBar = () => (
   <div className="absolute top-6 right-1/2 w-5/6 max-w-6xl h-12 z-20">
     <ul className="relative -right-1/2 list-none px-8 py-3 bg-slate-900 bg-opacity-90 shadow flex justify-between leading-tight text-neutral-300">
-      <li className="text-base ">Logo</li>
       <div className="text-sm flex gap-6 justify-evenly">
-        <MenuItem text="Home" sectionIdToGoTo={HERO_SECTION_ID} />
+        <MenuItem
+          text="Home"
+          sectionIdToGoTo={HERO_SECTION_ID}
+          className="lg:block hidden"
+        />
         <MenuItem text="Expertise" sectionIdToGoTo={EXPERTISE_SECTION_ID} />
         <MenuItem text="Work" sectionIdToGoTo={WORK_EXPERIENCE_SECTION_ID} />
         <MenuItem
@@ -29,14 +32,19 @@ export const TopNavBar = () => (
 const MenuItem = ({
   text,
   sectionIdToGoTo,
+  className,
 }: {
   text: string;
   sectionIdToGoTo?: string;
+  className?: string;
 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <a href={`#${sectionIdToGoTo}`} className="hover:font-semibold">
+    <a
+      href={`#${sectionIdToGoTo}`}
+      className={cn("hover:font-semibold", className)}
+    >
       <li
         className="flex items-center gap-2 cursor-pointer"
         onMouseEnter={() => setIsHovered(true)}

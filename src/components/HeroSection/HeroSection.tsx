@@ -27,10 +27,10 @@ export function HeroSection() {
       >
         <TextContent className="flex-shrink" />
         <div className="relative">
-          <PersonImage className="absolute z-10 top-0 right-0 md:w-[30rem] md:h-[30rem] w-40 h-40" />
+          <PersonImage className="lg:absolute z-10 top-0 right-0 md:w-[30rem] md:h-[30rem] w-40 h-40" />
           <BackgroundBlurredCircle
             variant={BgCircleVariant.RED}
-            className="right-0 top-0 bg-[#9E2A3D]"
+            className="right-0 top-0 bg-[#9E2A3D] lg:absolute hidden"
             style={{ width: "27rem", height: "27rem" }}
           />
         </div>
