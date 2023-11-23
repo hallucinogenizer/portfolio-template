@@ -6,7 +6,7 @@ export default function SkillCard({ content }: { content: SkillType }) {
   return (
     <div
       className={cn(
-        "w-96 h-72 bg-white/10 rounded-lg p-8 text-light",
+        "md:w-96 w-full md:h-72 bg-white/10 rounded-lg md:p-8 p-6 text-light",
         "flex flex-col gap-4",
         HOVER_TRANSLATE_CLASSES
       )}

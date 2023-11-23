@@ -16,7 +16,7 @@ export default function WorkTimelineSection() {
       )}
       id={WORK_EXPERIENCE_SECTION_ID}
     >
-      <div className="relative z-10 flex flex-col gap-16">
+      <div className="relative z-10 flex flex-col md:gap-16 gap-2">
         <SectionHeading title={["My Work", "Experience"]} />
         <TimelineDisplay />
       </div>
