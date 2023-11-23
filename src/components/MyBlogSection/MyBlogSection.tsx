@@ -3,6 +3,7 @@ import { cn } from "../../lib/utils/cn";
 import { SectionHeading } from "../common/SectionHeading";
 import BlogPostCard from "./BlogPostCard";
 import { blogsData } from "./blogData";
+import { Fade } from "react-awesome-reveal";
 
 export default function MyBlogSection() {
   return (
@@ -13,8 +14,10 @@ export default function MyBlogSection() {
         className="flex flex-wrap gap-12 justify-center"
         style={{ gap: "4.375rem" }}
       >
-        {blogsData.slice(0, 3).map((blogData) => (
-          <BlogPostCard content={blogData} />
+        {blogsData.slice(0, 3).map((blogData, i) => (
+          <Fade direction="up" delay={i * 200} triggerOnce>
+            <BlogPostCard content={blogData} />
+          </Fade>
         ))}
       </div>
     </div>

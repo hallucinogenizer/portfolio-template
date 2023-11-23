@@ -1,5 +1,7 @@
+import { Fade } from "react-awesome-reveal";
 import { CONTACT_SECTION_ID, HORIZONTAL_PADDING } from "../../lib/constants";
 import { cn } from "../../lib/utils/cn";
+import { personData } from "../HeroSection/personData";
 import { SocialLinkBox } from "../common/SocialLinkBox";
 
 export default function ContactSection() {
@@ -14,10 +16,30 @@ export default function ContactSection() {
       id={CONTACT_SECTION_ID}
     >
       <div className="flex gap-8">
-        <SocialLinkBox iconClassNames="fa-solid fa-phone" />
-        <SocialLinkBox iconClassNames="fa-regular fa-envelope" />
-        <SocialLinkBox iconClassNames="fa-brands fa-github" />
-        <SocialLinkBox iconClassNames="fa-brands fa-linkedin-in" />
+        <Fade direction="up" triggerOnce>
+          <SocialLinkBox
+            iconClassNames="fa-solid fa-phone"
+            link={`tel:${personData.phoneNumber}`}
+          />
+        </Fade>
+        <Fade direction="up" triggerOnce>
+          <SocialLinkBox
+            iconClassNames="fa-regular fa-envelope"
+            link={`mailto:${personData.email}`}
+          />
+        </Fade>
+        <Fade direction="up" triggerOnce>
+          <SocialLinkBox
+            iconClassNames="fa-brands fa-github"
+            link={personData.github}
+          />
+        </Fade>
+        <Fade direction="up" triggerOnce>
+          <SocialLinkBox
+            iconClassNames="fa-brands fa-linkedin-in"
+            link={personData.linkedIn}
+          />
+        </Fade>
       </div>
       <p className="text-light">Feel free to contact me</p>
     </div>

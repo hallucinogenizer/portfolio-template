@@ -16,30 +16,30 @@ export default function TestimonialCards({
     <div className="flex flex-wrap justify-center gap-16">
       {testimonialsData
         .slice(testimonialsToDisplayRange[0], testimonialsToDisplayRange[1])
-        .map((testimonialData) => (
-          <TestimonialCard content={testimonialData} />
+        .map((testimonialData, i) => (
+          <Fade direction="up" delay={i * 200} triggerOnce>
+            <TestimonialCard content={testimonialData} />
+          </Fade>
         ))}
     </div>
   );
 }
 
 const TestimonialCard = ({ content }: { content: TestimonialDataType }) => (
-  <Fade direction="up" triggerOnce>
-    <div
-      className={`bg-zinc-400 bg-opacity-20 flex flex-col gap-8 justify-around shadow p-6 rounded-lg ${HOVER_TRANSLATE_CLASSES}`}
-      style={{ width: "21.625rem" }}
-    >
-      <div className="flex flex-col gap-4">
-        <div>
-          <i className="fa-solid fa-quote-left fa-2xl text-teal-500"></i>
-        </div>
-        <p className="text-light text-justify leading-tight whitespace-pre-wrap overflow-ellipsis line-clamp-[14]">
-          {content.quote}
-        </p>
+  <div
+    className={`bg-zinc-400 bg-opacity-20 flex flex-col gap-8 justify-around shadow p-6 rounded-lg ${HOVER_TRANSLATE_CLASSES}`}
+    style={{ width: "21.625rem" }}
+  >
+    <div className="flex flex-col gap-4">
+      <div>
+        <i className="fa-solid fa-quote-left fa-2xl text-teal-500"></i>
       </div>
-      <TestominialPersonProfile content={content.person} />
+      <p className="text-light text-justify leading-tight whitespace-pre-wrap overflow-ellipsis line-clamp-[14]">
+        {content.quote}
+      </p>
     </div>
-  </Fade>
+    <TestominialPersonProfile content={content.person} />
+  </div>
 );
 
 const TestominialPersonProfile = ({ content }: { content: PersonType }) => (
