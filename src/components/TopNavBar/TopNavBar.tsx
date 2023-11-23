@@ -3,19 +3,30 @@ import { cn } from "../../lib/utils/cn";
 import {
   CONTACT_SECTION_ID,
   EXPERTISE_SECTION_ID,
+  HORIZONTAL_PADDING,
   TESTIMONIALS_SECTION_ID,
   WORK_EXPERIENCE_SECTION_ID,
 } from "../../lib/constants";
 
 export const TopNavBar = () => (
-  <div className="absolute top-6 right-1/2 w-full md:max-w-3xl max-w-11/12 h-12 z-20">
-    <ul className="relative -right-1/2 list-none md:px-16 px-6 py-3 bg-slate-900 bg-opacity-90 shadow flex justify-around leading-tight text-neutral-300 text-sm">
-      <MenuItem text="Blog" link="/blog" />
-      <MenuItem text="Expertise" sectionIdToGoTo={EXPERTISE_SECTION_ID} />
-      <MenuItem text="Work" sectionIdToGoTo={WORK_EXPERIENCE_SECTION_ID} />
-      <MenuItem text="Testimonials" sectionIdToGoTo={TESTIMONIALS_SECTION_ID} />
-      <MenuItem text="Contact" sectionIdToGoTo={CONTACT_SECTION_ID} />
-    </ul>
+  <div
+    className={cn(
+      `sticky w-full top-2 z-20 h-20 ${HORIZONTAL_PADDING}`,
+      "px-2"
+    )}
+  >
+    <div className="w-full h-full">
+      <ul className="list-none md:px-16 px-2 py-3 bg-slate-900 shadow flex justify-around leading-tight text-neutral-300 md:text-sm text-xs">
+        <MenuItem text="Blog" link="/blog" />
+        <MenuItem text="Expertise" sectionIdToGoTo={EXPERTISE_SECTION_ID} />
+        <MenuItem text="Work" sectionIdToGoTo={WORK_EXPERIENCE_SECTION_ID} />
+        <MenuItem
+          text="Testimonials"
+          sectionIdToGoTo={TESTIMONIALS_SECTION_ID}
+        />
+        <MenuItem text="Contact" sectionIdToGoTo={CONTACT_SECTION_ID} />
+      </ul>
+    </div>
   </div>
 );
 
