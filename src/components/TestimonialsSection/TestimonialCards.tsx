@@ -27,13 +27,13 @@ const TestimonialCard = ({ content }: { content: TestimonialDataType }) => (
   <Fade direction="up" triggerOnce>
     <div
       className={`bg-zinc-400 bg-opacity-20 flex flex-col justify-around shadow p-6 rounded-lg ${HOVER_TRANSLATE_CLASSES}`}
-      style={{ width: "21.625rem", height: "22.375rem" }}
+      style={{ width: "21.625rem", height: "30.375rem" }}
     >
       <div className="flex flex-col gap-4">
         <div>
           <i className="fa-solid fa-quote-left fa-2xl text-teal-500"></i>
         </div>
-        <p className="text-light text-justify leading-tight overflow-ellipsis line-clamp-[7]">
+        <p className="text-light text-justify leading-tight whitespace-pre-wrap overflow-ellipsis line-clamp-[14]">
           {content.quote}
         </p>
       </div>
@@ -52,7 +52,7 @@ const TestominialPersonProfile = ({ content }: { content: PersonType }) => (
       >
         {content.name}
       </h5>
-      <p className="text-stone-300 text-sm font-normal capitalize leading-tight">
+      <p className="text-stone-300 text-sm whitespace-pre-wrap font-normal capitalize leading-tight">
         {content.title}
       </p>
     </div>
