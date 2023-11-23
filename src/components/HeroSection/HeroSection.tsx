@@ -25,7 +25,7 @@ export function HeroSection() {
 
       <div
         className={cn(
-          "pt-24 md:pt-52 flex gap-4 md:flex-row flex-col-reverse justify-between relative z-10",
+          "pt-0 md:pt-32 flex gap-4 md:flex-row flex-col-reverse justify-between relative z-10",
           HORIZONTAL_PADDING
         )}
       >
@@ -34,8 +34,7 @@ export function HeroSection() {
           <PersonImage className="lg:absolute z-10 top-0 right-0 lg:w-[30rem] lg:h-[30rem] md:w-96 md:h-96 w-52 h-52" />
           <BackgroundBlurredCircle
             variant={BgCircleVariant.RED}
-            className="right-0 top-0 bg-[#9E2A3D] lg:absolute lg:block hidden"
-            style={{ width: "27rem", height: "27rem" }}
+            className="right-12 top-0 bg-[#9E2A3D] lg:absolute lg:block hidden w-96 h-96"
           />
         </div>
       </div>

@@ -6,11 +6,11 @@ import { personData } from "./personData";
 import Resume from "../../assets/custom/Rohan Hussain.pdf";
 
 export const TextContent = ({ className }: { className: string }) => (
-  <div className={cn("flex flex-col gap-2", className)}>
-    <Hello className="mb-4" />
-    <PersonName className="mb-2" />
+  <div className={cn("flex flex-col gap-3", className)}>
+    <Hello className="md:mb-4 mb-2" />
+    <PersonName className="md:mb-2 mb-1" />
     <ProfessionalTitles />
-    <DownloadResume className="mt-10" />
+    <DownloadResume className="md:mt-10 mt-4" />
     <SocialIcons className="mt-8" />
   </div>
 );
@@ -19,7 +19,7 @@ const Hello = ({ className }: ClassNameProp) => (
   <div className={cn("inline-flex items-center gap-4", className)}>
     <ShortLine />{" "}
     <p
-      className="text-stone-300 text-2xl leading-loose"
+      className="text-stone-300 text-xl leading-loose"
       style={{ fontFamily: "Roboto Mono" }}
     >
       Hello!
@@ -33,7 +33,7 @@ const ShortLine = () => (
 const PersonName = ({ className }: ClassNameProp) => (
   <h1
     className={cn(
-      "text-light text-6xl font-bold font-['Poppins'] uppercase leading-none",
+      "text-light md:text-6xl text-5xl font-bold font-['Poppins'] uppercase leading-none",
       className
     )}
   >
@@ -55,7 +55,7 @@ const ProfessionalTitles = () => {
 
   return (
     <h3
-      className="text-3xl font-medium leading-10 tracking-widest"
+      className="text-2xl font-medium leading-10 tracking-widest"
       style={{ fontFamily: "Roboto Mono" }}
     >
       <span className="text-stone-300">I'm a </span>
@@ -69,7 +69,7 @@ const ProfessionalTitles = () => {
 const DownloadResume = ({ className }: { className?: string }) => (
   <a
     className={cn(
-      "px-3 py-2 w-fit border border-teal-500 hover:bg-teal-500 text-teal-500 hover:text-white rounded",
+      "px-3 py-2 md:text-base text-sm w-fit border border-teal-500 hover:bg-teal-500 text-teal-500 hover:text-white rounded",
       className
     )}
     href={Resume}
