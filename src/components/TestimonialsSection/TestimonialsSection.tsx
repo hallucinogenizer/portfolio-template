@@ -41,11 +41,11 @@ export default function TestimonialsSection() {
       </div>
 
       <BackgroundBlurredCircle
-        variant={BgCircleVariant.ONE}
+        variant={BgCircleVariant.BLUE}
         className="-left-24 top-0 bg-opacity-50"
       />
       <BackgroundBlurredCircle
-        variant={BgCircleVariant.TWO}
+        variant={BgCircleVariant.RED}
         className="-right-24 bottom-0 bg-opacity-50"
       />
     </div>
