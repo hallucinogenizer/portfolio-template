@@ -10,7 +10,7 @@ import {
 
 export const TopNavBar = () => (
   <div className="absolute top-6 right-1/2 w-5/6 max-w-6xl h-12 z-20">
-    <ul className="relative -right-1/2 list-none px-8 py-3 bg-slate-900 bg-opacity-90 shadow flex justify-between leading-tight text-neutral-300">
+    <ul className="relative -right-1/2 list-none px-8 py-3 bg-slate-900 bg-opacity-90 shadow flex justify-end leading-tight text-neutral-300">
       <div className="text-sm flex gap-6 justify-evenly">
         <MenuItem
           text="Home"
