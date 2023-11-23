@@ -13,7 +13,7 @@ export default function TestimonialCards({
   testimonialsToDisplayRange: [number, number];
 }) {
   return (
-    <div className="flex flex-wrap justify-center gap-16">
+    <div className="flex flex-wrap justify-between gap-16">
       {testimonialsData
         .slice(testimonialsToDisplayRange[0], testimonialsToDisplayRange[1])
         .map((testimonialData, i) => (
@@ -27,8 +27,7 @@ export default function TestimonialCards({
 
 const TestimonialCard = ({ content }: { content: TestimonialDataType }) => (
   <div
-    className={`bg-zinc-400 bg-opacity-20 flex flex-col gap-8 justify-around shadow p-6 rounded-lg ${HOVER_TRANSLATE_CLASSES}`}
-    style={{ width: "21.625rem" }}
+    className={`bg-zinc-400 bg-opacity-20 flex flex-col gap-8 justify-around shadow p-6 rounded-lg ${HOVER_TRANSLATE_CLASSES} md:w-[21.625rem] w-full`}
   >
     <div className="flex flex-col gap-4">
       <div>
