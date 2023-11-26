@@ -2,6 +2,9 @@ import { DataType } from "./lib/types";
 import WasiqDp from "./assets/custom/wasiq.jpeg";
 import DanishDp from "./assets/custom/danish.jpg";
 import WahabDp from "./assets/custom/Wahab.jpeg";
+import SupertokensBlogPost from "../../assets/custom/supertokens-blog-post.png";
+import ReactStateManagementBlogPostThumbnail from "../../assets/custom/react-state-management.png";
+import TypeScriptPythonThumbnail from "../../assets/custom/typescript-python.jpeg";
 
 export const data: DataType = {
   person: {
@@ -127,6 +130,31 @@ export const data: DataType = {
       description: `Designed for Low-Computer-Literate Students from non-Urban Areas | System optimized for low-power systems | Server-side routing | Ideated 4 scalable independent systems for the 4 phases of the IEC Process (Acquisition, Learning, Placement, Community) that work in harmony.
   
   For over a year I worked as the only engineer on the project. Afterwards as a 6-month exit plan, I helped build a team and assumed the role of Engineering Manager and Mentor before finally leaving the company when the team no longer needed my oversight.`,
+    },
+  ],
+  blog: [
+    {
+      title:
+        "Setting up Supertokens with a NextJS 13 Frontend and an ExpressJS Backend",
+      link: "https://rohanhussain.com/blog/post/supertokens-with-nextjs-and-expressjs/",
+      description:
+        "This article teaches you how to locally set up a NextJS 13 frontend (with App Router as well as Pages Router) and a separate ExpressJS backend and also explains how the whole setup works.",
+      thumbnail: SupertokensBlogPost,
+      datePosted: "August 12, 2023",
+    },
+    {
+      title: "State Management Tools in React",
+      link: "https://rohanhussain.com/blog/post/react-state-management-tools/",
+      description: "ContextAPI, Redux, Zustand, Jotai, what to use?",
+      thumbnail: ReactStateManagementBlogPostThumbnail,
+      datePosted: "May 8, 2023",
+    },
+    {
+      title: "Typescript-like Types in Python 3",
+      link: "https://rohanhussain.com/blog/post/typescript-like-types-in-python/",
+      description: "def sum(x: int, y: int) -> int",
+      thumbnail: TypeScriptPythonThumbnail,
+      datePosted: "February 14, 2023",
     },
   ],
 };

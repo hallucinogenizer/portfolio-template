@@ -1,14 +1,7 @@
 import SupertokensBlogPost from "../../assets/custom/supertokens-blog-post.png";
 import ReactStateManagementBlogPostThumbnail from "../../assets/custom/react-state-management.png";
 import TypeScriptPythonThumbnail from "../../assets/custom/typescript-python.jpeg";
-
-export type BlogDataType = {
-  title: string;
-  link: string;
-  description: string;
-  datePosted: string;
-  thumbnail: string;
-};
+import { BlogDataType } from "../../lib/types";
 
 export const blogsData: BlogDataType[] = [
   {

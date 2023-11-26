@@ -31,9 +31,18 @@ export type ExperienceDataType = {
   description: string;
 };
 
+export type BlogDataType = {
+  title: string;
+  link: string;
+  description: string;
+  datePosted: string;
+  thumbnail: string;
+};
+
 export type DataType = {
   person: PersonDataType;
   skills: SkillType[];
   testimonials: TestimonialDataType[];
   experience: ExperienceDataType[];
+  blog: BlogDataType[];
 };
