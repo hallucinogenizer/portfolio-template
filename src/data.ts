@@ -2,9 +2,9 @@ import { DataType } from "./lib/types";
 import WasiqDp from "./assets/custom/wasiq.jpeg";
 import DanishDp from "./assets/custom/danish.jpg";
 import WahabDp from "./assets/custom/Wahab.jpeg";
-import SupertokensBlogPost from "../../assets/custom/supertokens-blog-post.png";
-import ReactStateManagementBlogPostThumbnail from "../../assets/custom/react-state-management.png";
-import TypeScriptPythonThumbnail from "../../assets/custom/typescript-python.jpeg";
+import SupertokensBlogPost from "./assets/custom/supertokens-blog-post.png";
+import ReactStateManagementBlogPostThumbnail from "./assets/custom/react-state-management.png";
+import TypeScriptPythonThumbnail from "./assets/custom/typescript-python.jpeg";
 
 export const data: DataType = {
   person: {
