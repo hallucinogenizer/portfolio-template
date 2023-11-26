@@ -8,7 +8,7 @@ export default function BlogPostCard({ content }: { content: BlogDataType }) {
   return (
     <a href={content.link} style={{ height: "28rem" }} target="_blank">
       <div
-        className="bg-zinc-300/10 rounded-lg text-light transition-all md:w-[21.25rem] w-full h-[28.5rem] hover:h-[27rem]"
+        className="bg-zinc-300/10 rounded-lg text-light transition-all md:w-[21.25rem] w-full h-[27rem] hover:h-[28.5rem]"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
