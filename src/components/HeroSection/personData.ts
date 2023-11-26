@@ -1,4 +1,6 @@
-export const personData = {
+import { PersonDataType } from "../../lib/types";
+
+export const personData: PersonDataType = {
   name: "Rohan Hussain",
   titles: [
     "Software Engineer",
