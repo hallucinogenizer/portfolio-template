@@ -1,9 +1,4 @@
-export type ExperienceDataType = {
-  date: string;
-  companyName: string;
-  jobTitle: string;
-  description: string;
-};
+import { ExperienceDataType } from "../../lib/types";
 
 export const experienceData: ExperienceDataType[] = [
   {
