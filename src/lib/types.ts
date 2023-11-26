@@ -1,4 +1,5 @@
 export type PersonDataType = {
+  picture: string;
   name: string;
   titles: string[];
   phoneNumber: string;

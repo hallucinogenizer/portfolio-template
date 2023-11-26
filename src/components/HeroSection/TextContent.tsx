@@ -57,7 +57,7 @@ const ProfessionalTitles = () => {
 
   return (
     <h3
-      className="text-2xl font-medium leading-10 tracking-widest"
+      className="md:text-3xl text-2xl font-medium leading-10 tracking-widest"
       style={{ fontFamily: "Roboto Mono" }}
     >
       <span className="text-stone-300">I'm a </span>
