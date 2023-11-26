@@ -1,11 +1,15 @@
 import TimelineBranchRightSvg from "../../assets/timelineBranchRight.svg";
 import TimelineBranchLeftSvg from "../../assets/timelineBranchLeft.svg";
 import ExperienceCard from "./ExperienceCard";
-import { ExperienceDataType, experienceData } from "./experienceData";
+
 import { cn } from "../../lib/utils/cn";
 import { Fade } from "react-awesome-reveal";
 import { HOVER_TRANSLATE_CLASSES } from "../../lib/constants";
 import useWindowDimensions from "../../lib/hooks/useWindowDimensions";
+import { data } from "../../data";
+import { ExperienceDataType } from "../../lib/types";
+
+const { experience: experienceData } = data;
 
 export default function TimelineDisplay() {
   const { width } = useWindowDimensions();

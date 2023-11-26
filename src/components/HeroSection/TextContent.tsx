@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { ClassNameProp } from "../../lib/utils/utils";
 import { cn } from "../../lib/utils/cn";
 import { SocialLinkBox } from "../common/SocialLinkBox";
-import { personData } from "./personData";
 import Resume from "../../assets/custom/Rohan Hussain.pdf";
+import { data } from "../../data";
+
+const { person: personData } = data;
 
 export const TextContent = ({ className }: { className: string }) => (
   <div className={cn("flex flex-col gap-3", className)}>

@@ -1,11 +1,13 @@
+import { data } from "../../data";
 import { HORIZONTAL_PADDING } from "../../lib/constants";
 import { cn } from "../../lib/utils/cn";
 import { SectionHeading } from "../common/SectionHeading";
 import BlogPostCard from "./BlogPostCard";
-import { blogsData } from "./blogData";
 import { Fade } from "react-awesome-reveal";
 
 export default function MyBlogSection() {
+  const { blog: blogsData } = data;
+
   return (
     <div className={cn("flex flex-col gap-16", HORIZONTAL_PADDING)}>
       <SectionHeading title={["My", "Blog"]} />

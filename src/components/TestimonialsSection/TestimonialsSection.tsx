@@ -11,7 +11,9 @@ import {
   TESTIMONIALS_SECTION_ID,
 } from "../../lib/constants";
 import { cn } from "../../lib/utils/cn";
-import { testimonialsData } from "./testimonialsData";
+import { data } from "../../data";
+
+const { testimonials: testimonialsData } = data;
 
 const MAX_SLIDES_TO_SHOW = 3;
 

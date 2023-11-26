@@ -1,10 +1,11 @@
 import { Fade } from "react-awesome-reveal";
 import { CONTACT_SECTION_ID, HORIZONTAL_PADDING } from "../../lib/constants";
 import { cn } from "../../lib/utils/cn";
-import { personData } from "../HeroSection/personData";
 import { SocialLinkBox } from "../common/SocialLinkBox";
+import { data } from "../../data";
 
 export default function ContactSection() {
+  const { person: personData } = data;
   return (
     <div
       className={cn(

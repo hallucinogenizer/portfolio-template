@@ -1,6 +1,8 @@
 import { Dispatch, SetStateAction } from "react";
 import { EncircledArrowButton } from "./EncircledArrowButton";
-import { testimonialsData } from "./testimonialsData";
+import { data } from "../../data";
+
+const { testimonials: testimonialsData } = data;
 
 export const TestimonialSliderArrows = ({
   testimonialsToDisplayRange,
