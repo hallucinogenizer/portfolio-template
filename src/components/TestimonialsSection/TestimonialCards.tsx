@@ -1,11 +1,8 @@
 import { Fade } from "react-awesome-reveal";
 
 import { HOVER_TRANSLATE_CLASSES } from "../../lib/constants";
-import {
-  PersonType,
-  TestimonialDataType,
-  testimonialsData,
-} from "./testimonialsData";
+import { TestimonialDataType, TestimonialPersonType } from "../../lib/types";
+import { data } from "../../data";
 
 export default function TestimonialCards({
   testimonialsToDisplayRange,
@@ -14,7 +11,7 @@ export default function TestimonialCards({
 }) {
   return (
     <div className="flex flex-wrap justify-between gap-16">
-      {testimonialsData
+      {data.testimonials
         .slice(testimonialsToDisplayRange[0], testimonialsToDisplayRange[1])
         .map((testimonialData, i) => (
           <Fade direction="up" delay={i * 200} triggerOnce>
@@ -41,7 +38,11 @@ const TestimonialCard = ({ content }: { content: TestimonialDataType }) => (
   </div>
 );
 
-const TestominialPersonProfile = ({ content }: { content: PersonType }) => (
+const TestominialPersonProfile = ({
+  content,
+}: {
+  content: TestimonialPersonType;
+}) => (
   <div className="flex gap-4 items-center">
     <img src={content.image} className="rounded-full object-fill w-16 h-16" />
     <div className="flex flex-col gap-1">

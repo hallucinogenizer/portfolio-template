@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { cn } from "../../lib/utils/cn";
-
-import { BlogDataType } from "./blogData";
+import { BlogDataType } from "../../lib/types";
 
 export default function BlogPostCard({ content }: { content: BlogDataType }) {
   const [isHovered, setIsHovered] = useState(false);

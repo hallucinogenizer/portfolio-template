@@ -1,5 +1,5 @@
+import { ExperienceDataType } from "../../lib/types";
 import { cn } from "../../lib/utils/cn";
-import { ExperienceDataType } from "./experienceData";
 
 export default function ExperienceCard({
   content,

@@ -1,6 +1,6 @@
 import { HOVER_TRANSLATE_CLASSES } from "../../lib/constants";
+import { SkillType } from "../../lib/types";
 import { cn } from "../../lib/utils/cn";
-import { SkillType } from "./skillsData";
 
 export default function SkillCard({ content }: { content: SkillType }) {
   return (
