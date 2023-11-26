@@ -7,6 +7,13 @@ export type PersonDataType = {
   github: string;
 };
 
+export type SkillType = {
+  icon: string;
+  title: string;
+  description: string;
+};
+
 export type DataType = {
   person: PersonDataType;
+  skills: SkillType[];
 };

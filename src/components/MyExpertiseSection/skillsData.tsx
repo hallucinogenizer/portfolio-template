@@ -1,8 +1,4 @@
-export type SkillType = {
-  icon: string;
-  title: string;
-  description: string;
-};
+import { SkillType } from "../../lib/types";
 
 export const skillsData: SkillType[] = [
   {
