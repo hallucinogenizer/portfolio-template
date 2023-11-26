@@ -3,17 +3,21 @@ import { cn } from "../../lib/utils/cn";
 import {
   CONTACT_SECTION_ID,
   EXPERTISE_SECTION_ID,
-  HERO_SECTION_ID,
+  HORIZONTAL_PADDING,
   TESTIMONIALS_SECTION_ID,
   WORK_EXPERIENCE_SECTION_ID,
 } from "../../lib/constants";
 
 export const TopNavBar = () => (
-  <div className="absolute top-6 right-1/2 w-5/6 max-w-6xl h-12 z-20">
-    <ul className="relative -right-1/2 list-none px-8 py-3 bg-slate-900 bg-opacity-90 shadow flex justify-between leading-tight text-neutral-300">
-      <li className="text-base ">Logo</li>
-      <div className="text-sm flex gap-6 justify-evenly">
-        <MenuItem text="Home" sectionIdToGoTo={HERO_SECTION_ID} />
+  <div
+    className={cn(
+      `sticky w-full top-2 z-20 h-20 ${HORIZONTAL_PADDING}`,
+      "px-2"
+    )}
+  >
+    <div className="w-full h-full">
+      <ul className="list-none md:px-16 px-2 py-3 bg-slate-900 shadow flex justify-around leading-tight text-neutral-300 md:text-sm text-xs">
+        <MenuItem text="Blog" link="/blog" />
         <MenuItem text="Expertise" sectionIdToGoTo={EXPERTISE_SECTION_ID} />
         <MenuItem text="Work" sectionIdToGoTo={WORK_EXPERIENCE_SECTION_ID} />
         <MenuItem
@@ -21,22 +25,29 @@ export const TopNavBar = () => (
           sectionIdToGoTo={TESTIMONIALS_SECTION_ID}
         />
         <MenuItem text="Contact" sectionIdToGoTo={CONTACT_SECTION_ID} />
-      </div>
-    </ul>
+      </ul>
+    </div>
   </div>
 );
 
 const MenuItem = ({
   text,
   sectionIdToGoTo,
+  link,
+  className,
 }: {
   text: string;
   sectionIdToGoTo?: string;
+  link?: string;
+  className?: string;
 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <a href={`#${sectionIdToGoTo}`} className="hover:font-semibold">
+    <a
+      href={link ? link : sectionIdToGoTo ? `#${sectionIdToGoTo}` : "#"}
+      className={cn("hover:font-semibold", className)}
+    >
       <li
         className="flex items-center gap-2 cursor-pointer"
         onMouseEnter={() => setIsHovered(true)}

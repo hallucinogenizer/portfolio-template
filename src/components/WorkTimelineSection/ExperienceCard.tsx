@@ -26,7 +26,7 @@ export default function ExperienceCard({
         <h4 className=" text-neutral-300 text-base font-bold leading-normal">
           {content.jobTitle}
         </h4>
-        <p className=" text-neutral-300 text-sm font-normal leading-tight text-justify">
+        <p className=" text-neutral-300 text-sm font-normal whitespace-pre-line leading-tight text-justify">
           {content.description}
         </p>
       </div>

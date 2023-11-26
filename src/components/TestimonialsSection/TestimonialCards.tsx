@@ -13,46 +13,45 @@ export default function TestimonialCards({
   testimonialsToDisplayRange: [number, number];
 }) {
   return (
-    <div className="flex flex-wrap justify-center gap-16">
+    <div className="flex flex-wrap justify-between gap-16">
       {testimonialsData
         .slice(testimonialsToDisplayRange[0], testimonialsToDisplayRange[1])
-        .map((testimonialData) => (
-          <TestimonialCard content={testimonialData} />
+        .map((testimonialData, i) => (
+          <Fade direction="up" delay={i * 200} triggerOnce>
+            <TestimonialCard content={testimonialData} />
+          </Fade>
         ))}
     </div>
   );
 }
 
 const TestimonialCard = ({ content }: { content: TestimonialDataType }) => (
-  <Fade direction="up" triggerOnce>
-    <div
-      className={`bg-zinc-400 bg-opacity-20 flex flex-col justify-around shadow p-6 rounded-lg ${HOVER_TRANSLATE_CLASSES}`}
-      style={{ width: "21.625rem", height: "22.375rem" }}
-    >
-      <div className="flex flex-col gap-4">
-        <div>
-          <i className="fa-solid fa-quote-left fa-2xl text-teal-500"></i>
-        </div>
-        <p className="text-light text-justify leading-tight overflow-ellipsis line-clamp-[7]">
-          {content.quote}
-        </p>
+  <div
+    className={`bg-zinc-400 bg-opacity-20 flex flex-col gap-8 justify-around shadow p-6 rounded-lg ${HOVER_TRANSLATE_CLASSES} md:w-[21.625rem] w-full`}
+  >
+    <div className="flex flex-col gap-4">
+      <div>
+        <i className="fa-solid fa-quote-left fa-2xl text-teal-500"></i>
       </div>
-      <TestominialPersonProfile content={content.person} />
+      <p className="text-light md:text-base text-sm text-justify leading-tight whitespace-pre-wrap overflow-ellipsis line-clamp-[14]">
+        {content.quote}
+      </p>
     </div>
-  </Fade>
+    <TestominialPersonProfile content={content.person} />
+  </div>
 );
 
 const TestominialPersonProfile = ({ content }: { content: PersonType }) => (
-  <div className="flex gap-4">
+  <div className="flex gap-4 items-center">
     <img src={content.image} className="rounded-full object-fill w-16 h-16" />
     <div className="flex flex-col gap-1">
       <h5
-        className="text-light text-lg font-medium leading-relaxed"
+        className="text-light md:text-lg text-base font-medium leading-relaxed"
         style={{ fontFamily: "Roboto Mono" }}
       >
         {content.name}
       </h5>
-      <p className="text-stone-300 text-sm font-normal capitalize leading-tight">
+      <p className="text-stone-300 text-sm whitespace-pre-wrap font-normal capitalize leading-tight">
         {content.title}
       </p>
     </div>
