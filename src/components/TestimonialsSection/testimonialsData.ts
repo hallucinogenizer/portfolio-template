@@ -1,17 +1,7 @@
 import WasiqDp from "../../assets/custom/wasiq.jpeg";
 import DanishDp from "../../assets/custom/danish.jpg";
 import WahabDp from "../../assets/custom/Wahab.jpeg";
-
-export type PersonType = {
-  name: string;
-  image: string;
-  title: string;
-};
-
-export type TestimonialDataType = {
-  quote: string;
-  person: PersonType;
-};
+import { TestimonialDataType } from "../../lib/types";
 
 export const testimonialsData: TestimonialDataType[] = [
   {

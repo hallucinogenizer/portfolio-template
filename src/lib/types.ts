@@ -13,7 +13,19 @@ export type SkillType = {
   description: string;
 };
 
+export type TestimonialPersonType = {
+  name: string;
+  image: string;
+  title: string;
+};
+
+export type TestimonialDataType = {
+  quote: string;
+  person: TestimonialPersonType;
+};
+
 export type DataType = {
   person: PersonDataType;
   skills: SkillType[];
+  testimonials: TestimonialDataType[];
 };
