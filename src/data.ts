@@ -13,9 +13,8 @@ export const data: DataType = {
     name: "Rohan Hussain",
     titles: [
       "Software Engineer",
-      "UI/UX Designer",
-      "Vector Illustrator",
       "Master Communicator",
+      "UI/UX Designer",
       "Leader",
       "Team Player",
     ],
