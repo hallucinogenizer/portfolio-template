@@ -17,16 +17,13 @@ export const BackgroundBlurredCircle = ({
 }) => {
   return variant === BgCircleVariant.BLUE ? (
     <div
-      className={cn(
-        "absolute w-96 h-96 bg-cyan-600 rounded-full blur-3xl",
-        className
-      )}
-      style={style}
+      className={cn("absolute w-96 h-96 rounded-full blur-[175px]", className)}
+      style={{ ...style, backgroundColor: "#008AAA" }}
     />
   ) : (
     <div
       className={cn(
-        "absolute w-96 h-96 bg-pink-950 rounded-full blur-3xl",
+        "absolute w-96 h-96 bg-pink-950 rounded-full blur-[175px]",
         className
       )}
       style={style}

@@ -5,14 +5,16 @@ import WahabDp from "./assets/custom/Wahab.jpeg";
 import SupertokensBlogPost from "./assets/custom/supertokens-blog-post.png";
 import ReactStateManagementBlogPostThumbnail from "./assets/custom/react-state-management.png";
 import TypeScriptPythonThumbnail from "./assets/custom/typescript-python.jpeg";
+import RohanDP from "./assets/custom/my_picture_no_bg.png";
 
 export const data: DataType = {
   person: {
+    picture: RohanDP,
     name: "Rohan Hussain",
     titles: [
       "Software Engineer",
       "UI/UX Designer",
-      "Vector Illustration Artist",
+      "Vector Illustrator",
       "Master Communicator",
       "Leader",
       "Team Player",

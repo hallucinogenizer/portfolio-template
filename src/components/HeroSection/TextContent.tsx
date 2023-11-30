@@ -49,36 +49,65 @@ const ProfessionalTitles = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentTitleIndex((cur) => (cur + 1) % personData.titles.length);
-    }, 1500);
+    }, 2000);
 
     // Cleanup the interval when the component unmounts
     return () => clearInterval(intervalId);
   }, []);
 
   return (
-    <h3
-      className="md:text-3xl text-2xl font-medium leading-10 tracking-widest"
+    <div
+      className={cn(
+        "md:text-3xl text-2xl font-bold leading-10 tracking-widest",
+        "flex items-start gap-5"
+      )}
       style={{ fontFamily: "Roboto Mono" }}
     >
-      <span className="text-stone-300">I'm a </span>
-      <span className="text-teal-500">
-        {personData.titles[currentTitleIndex]}
-      </span>
-    </h3>
+      <p className="text-stone-300">I'm a </p>
+      <div
+        className="text-teal-500 h-10 overflow-clip relative"
+        style={{ width: "30rem" }}
+      >
+        {personData.titles.map((title, titleIndex) => (
+          <p
+            className={cn(
+              "absolute left-0 top-24 transition-all duration-500",
+              titleIndex === currentTitleIndex && "top-0"
+            )}
+          >
+            {title}
+          </p>
+        ))}
+      </div>
+    </div>
   );
 };
 
-const DownloadResume = ({ className }: { className?: string }) => (
-  <a
-    className={cn(
-      "px-3 py-2 md:text-base text-sm w-fit border border-teal-500 hover:bg-teal-500 text-teal-500 hover:text-white rounded",
-      className
-    )}
-    href={Resume}
-  >
-    Download Resume
-  </a>
-);
+const DownloadResume = ({ className }: { className?: string }) => {
+  const [isHover, setIsHover] = useState(false);
+
+  return (
+    <a
+      className={cn(
+        "px-3 py-2 w-fit border border-teal-500 hover:bg-teal-500 rounded",
+        "md:text-base text-sm text-teal-500 hover:text-white",
+        "flex items-center gap-1",
+        className
+      )}
+      onMouseEnter={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}
+      href={Resume}
+    >
+      <span>Download Resume</span>
+      <i
+        className={cn(
+          "fa-solid fa-chevron-down transition-all duration-500 pl-1",
+          isHover && "-rotate-90 pl-0"
+        )}
+      ></i>
+    </a>
+  );
+};
 
 const SocialIcons = ({ className }: { className?: string }) => (
   <div className={cn("flex gap-6", className)}>
