@@ -59,7 +59,7 @@ const ProfessionalTitles = () => {
     <div
       className={cn(
         "md:text-3xl text-2xl font-bold leading-10 tracking-widest",
-        "flex items-start gap-5"
+        "flex items-start gap-x-5 lg:flex-row flex-col"
       )}
       style={{ fontFamily: "Roboto Mono" }}
     >
