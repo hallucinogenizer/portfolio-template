@@ -99,9 +99,10 @@ export const data: DataType = {
     {
       date: "May 2023 - Present",
       companyName: "Apollo Group (Y-Combinator Startup)",
-      jobTitle: "Full Stack Software Engineer",
-      description:
-        "Apollo Group Is The Next Project Of The Airlift Technologies Team, That Raised $120M+ In Capital Before Shutting Down.I Have Helped Launch 2 MVP Products, Involving GPT-Based Chatbots And React-Based Web Applications. I Am Working In A Dynamic Startup Environment With A Small Team Of Software Engineers.",
+      jobTitle: "Founding Full Stack Software Engineer (Level 3)",
+      description: `Apollo group is the next project of the Airlift Technologies team, that raised $120M+ in capital before shutting down. I have helped launch 2 MVP products, involving GPT-based chatbots and React-based web applications. I am working in a dynamic startup environment with a small team of software engineers.
+      
+      Within a period of 8 months, I was promoted two times due to exceptional performance.`,
     },
     {
       date: "August 2022 - April 2023",
