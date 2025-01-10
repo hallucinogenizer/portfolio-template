@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ClassNameProp } from "../../lib/utils/utils";
 import { cn } from "../../lib/utils/cn";
 import { SocialLinkBox } from "../common/SocialLinkBox";

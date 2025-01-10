@@ -1,7 +1,6 @@
 import { HERO_SECTION_ID, HORIZONTAL_PADDING } from "../../lib/constants";
 import { cn } from "../../lib/utils/cn";
 import { BackgroundBlurredCircle, BgCircleVariant } from "../common/BackgroundBlurredCircle";
-import { Meteors } from "../ui/aceternity/Meteors";
 import { Spotlight } from "../ui/aceternity/Spotlight";
 import { PersonImage } from "./PersonImage";
 import { TextContent } from "./TextContent";
