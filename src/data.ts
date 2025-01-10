@@ -4,6 +4,8 @@ import DanishDp from "./assets/custom/danish.jpg";
 import WahabDp from "./assets/custom/Wahab.jpeg";
 import SupertokensBlogPost from "./assets/custom/supertokens-blog-post.png";
 import ReactStateManagementBlogPostThumbnail from "./assets/custom/react-state-management.png";
+import UnderstandingLargeUnfamiliarCodebases from "./assets/custom/understanding-large-unfamiliar-codebases.webp";
+import OrvalLogo from "./assets/custom/orval-logo.png";
 import TypeScriptPythonThumbnail from "./assets/custom/typescript-python.jpeg";
 import RohanDP from "./assets/custom/my_picture_no_bg.png";
 
@@ -11,13 +13,7 @@ export const data: DataType = {
   person: {
     picture: RohanDP,
     name: "Rohan Hussain",
-    titles: [
-      "Software Engineer",
-      "Master Communicator",
-      "UI/UX Designer",
-      "Leader",
-      "Team Player",
-    ],
+    titles: ["Software Engineer", "Master Communicator", "UI/UX Designer", "Leader", "Team Player"],
     phoneNumber: "+923320460729",
     email: "contact@rohanhussain.com",
     linkedIn: "https://linkedin.com/in/rohan-hussain",
@@ -32,21 +28,18 @@ export const data: DataType = {
     },
     {
       icon: "fa-brands fa-react",
-      title: "NextJS",
-      description:
-        "Proficient in developing server-side rendered and statically generated React applications with NextJS.",
+      title: "NextJS App Router",
+      description: "Proficient in developing React applications with NextJS v14/15.",
     },
     {
       icon: "fa-brands fa-node",
       title: "ExpressJS, NestJS",
-      description:
-        "Skilled in building scalable and maintainable server-side applications using NestJS.",
+      description: "Skilled in building scalable and maintainable server-side applications using NestJS.",
     },
     {
       icon: "fa-brands fa-aws",
       title: "DevOps with AWS",
-      description:
-        "Expertise in cloud computing with AWS, including IAM, EC2, Lambdas, and CI/CD CodePipeline.",
+      description: "Expertise in cloud computing with AWS, including IAM, EC2, Lambdas, and CI/CD CodePipeline.",
     },
     {
       icon: "fa-solid fa-paint-brush",
@@ -57,8 +50,7 @@ export const data: DataType = {
     {
       icon: "fa-solid fa-comments",
       title: "Communication",
-      description:
-        "Excellent communication is my superpower and I use it to enable my team to work smoothly.",
+      description: "Excellent communication is my superpower and I use it to enable my team to work smoothly.",
     },
   ],
   testimonials: [
@@ -98,9 +90,9 @@ export const data: DataType = {
   experience: [
     {
       date: "May 2023 - Present",
-      companyName: "Apollo Group (Y-Combinator Startup)",
-      jobTitle: "Founding Full Stack Software Engineer (Level 3)",
-      description: `Apollo group is the next project of the Airlift Technologies team, that raised $120M+ in capital before shutting down. I have helped launch 2 MVP products, involving GPT-based chatbots and React-based web applications. I am working in a dynamic startup environment with a small team of software engineers.
+      companyName: "Metal (Y-Combinator Startup)",
+      jobTitle: "Founding Full Stack Frontend-Heavy Software Engineer II (Level 4)",
+      description: `Metal formerly known as Apollo Group is the next project of the Airlift Technologies team, that raised $120M+ in capital before shutting down. I have helped launch 2 MVP products, involving GPT-based chatbots and React-based web applications. I am working in a dynamic startup environment with a small team of software engineers.
       
       Within a period of 8 months, I was promoted two times due to exceptional performance.`,
     },
@@ -136,9 +128,16 @@ export const data: DataType = {
   ],
   blog: [
     {
-      title:
-        "Setting up Supertokens with a NextJS 13 Frontend and an ExpressJS Backend",
-      link: "https://rohanhussain.com/blog/post/supertokens-with-nextjs-and-expressjs/",
+      title: "How to incrementally add TypeScript response-types to your React/Svelte/Vue/Angular API data fetching",
+      link: "https://rohanhussain.com/blog/blog/post/how-to-incrementally-introduce-strong-typing-to-your-api-fetches-in-react/",
+      description:
+        "This article dives into how you can use projects like orval to consume an OpenAPI spec file and produce a client wrapper for almost any fetching library of your choosing",
+      thumbnail: OrvalLogo,
+      datePosted: "July 26, 2024",
+    },
+    {
+      title: "Setting up Supertokens with a NextJS 13 Frontend and an ExpressJS Backend",
+      link: "https://rohanhussain.com/blog/blog/post/supertokens-with-nextjs-and-expressjs/",
       description:
         "This article teaches you how to locally set up a NextJS 13 frontend (with App Router as well as Pages Router) and a separate ExpressJS backend and also explains how the whole setup works.",
       thumbnail: SupertokensBlogPost,
@@ -146,17 +145,25 @@ export const data: DataType = {
     },
     {
       title: "State Management Tools in React",
-      link: "https://rohanhussain.com/blog/post/react-state-management-tools/",
+      link: "https://rohanhussain.com/blog/blog/post/react-state-management-tools/",
       description: "ContextAPI, Redux, Zustand, Jotai, what to use?",
       thumbnail: ReactStateManagementBlogPostThumbnail,
       datePosted: "May 8, 2023",
     },
     {
       title: "Typescript-like Types in Python 3",
-      link: "https://rohanhussain.com/blog/post/typescript-like-types-in-python/",
+      link: "https://rohanhussain.com/blog/blog/post/typescript-like-types-in-python/",
       description: "def sum(x: int, y: int) -> int",
       thumbnail: TypeScriptPythonThumbnail,
       datePosted: "February 14, 2023",
+    },
+    {
+      title: "Understanding Large Unfamiliar Codebases",
+      link: "https://rohanhussain.com/blog/blog/post/understanding-large-codebases/",
+      description:
+        "This article explores techniques that help you get started with understanding large and complex codebases that you are new to.",
+      thumbnail: UnderstandingLargeUnfamiliarCodebases,
+      datePosted: "September 23, 2022",
     },
   ],
 };

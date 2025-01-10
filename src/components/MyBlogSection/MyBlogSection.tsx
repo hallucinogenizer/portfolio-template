@@ -12,11 +12,8 @@ export default function MyBlogSection() {
     <div className={cn("flex flex-col gap-16", HORIZONTAL_PADDING)}>
       <SectionHeading title={["My", "Blog"]} />
 
-      <div
-        className="flex flex-wrap gap-12 justify-center"
-        style={{ gap: "4.375rem" }}
-      >
-        {blogsData.slice(0, 3).map((blogData, i) => (
+      <div className="flex flex-wrap gap-12 justify-center" style={{ gap: "4.375rem" }}>
+        {blogsData.map((blogData, i) => (
           <Fade direction="up" delay={i * 200} triggerOnce>
             <BlogPostCard content={blogData} />
           </Fade>
