@@ -6,17 +6,22 @@ import "./App.css";
 import TestimonialsSection from "./components/TestimonialsSection/TestimonialsSection";
 import MyBlogSection from "./components/MyBlogSection/MyBlogSection";
 import ContactSection from "./components/ContactSection/ContactSection";
+import { TracingBeam } from "./components/ui/aceternity/TracingBeam";
 
 function App() {
   return (
-    <div className="bg-slate-950 w-full overflow-x-clip min-h-screen py-6 flex flex-col gap-20">
-      <TopNavBar />
-      <HeroSection />
-      <MyExpertiseSection />
-      <WorkTimelineSection />
-      <TestimonialsSection />
-      <MyBlogSection />
-      <ContactSection />
+    <div className="bg-slate-950 w-full overflow-x-clip min-h-screen py-6">
+      <TracingBeam className="w-full lg:max-w-[92%] px-6" beamClassName="lg:block hidden">
+        <div className="flex flex-col gap-20">
+          <TopNavBar />
+          <HeroSection />
+          <MyExpertiseSection />
+          <WorkTimelineSection />
+          <TestimonialsSection />
+          <MyBlogSection />
+          <ContactSection />
+        </div>
+      </TracingBeam>
     </div>
   );
 }

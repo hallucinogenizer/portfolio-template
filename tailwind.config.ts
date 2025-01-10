@@ -1,13 +1,11 @@
-/** @type {import('tailwindcss').Config} */
+import flattenColorPalette from "tailwindcss/lib/util/flattenColorPalette";
+
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
-        light: '#D3D3D3'
+        light: "#D3D3D3",
       },
       animation: {
         "meteor-effect": "meteor 5s linear infinite",
@@ -35,5 +33,15 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [addVariablesForColors],
+};
+
+// This plugin adds each Tailwind color as a global CSS variable, e.g. var(--gray-200).
+function addVariablesForColors({ addBase, theme }: any) {
+  let allColors = flattenColorPalette(theme("colors"));
+  let newVars = Object.fromEntries(Object.entries(allColors).map(([key, val]) => [`--${key}`, val]));
+
+  addBase({
+    ":root": newVars,
+  });
 }
