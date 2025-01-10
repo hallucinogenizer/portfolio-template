@@ -9,7 +9,7 @@ import { TextContent } from "./TextContent";
 export function HeroSection() {
   return (
     <div className="w-full relative py-16" id={HERO_SECTION_ID}>
-      <Spotlight className="-top-40 left-4 h-[200%]" />
+      <Spotlight className="lg:-top-40 top-0 left-4 h-[200%]" />
       <BackgroundBlurredCircle
         variant={BgCircleVariant.RED}
         className="right-0 -bottom-24 bg-[#9E2A3D]/50 absolute lg:hidden w-96 h-96"
