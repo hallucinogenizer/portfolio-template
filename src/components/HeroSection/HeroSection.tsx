@@ -2,13 +2,14 @@ import { HERO_SECTION_ID, HORIZONTAL_PADDING } from "../../lib/constants";
 import { cn } from "../../lib/utils/cn";
 import { BackgroundBlurredCircle, BgCircleVariant } from "../common/BackgroundBlurredCircle";
 import { Meteors } from "../ui/aceternity/Meteors";
+import { Spotlight } from "../ui/aceternity/Spotlight";
 import { PersonImage } from "./PersonImage";
 import { TextContent } from "./TextContent";
 
 export function HeroSection() {
   return (
     <div className="w-full relative py-16" id={HERO_SECTION_ID}>
-      <BackgroundBlurredCircle variant={BgCircleVariant.BLUE} className="left-16" />
+      <Spotlight className="-top-40 left-4 h-[200%]" />
       <BackgroundBlurredCircle
         variant={BgCircleVariant.RED}
         className="right-0 -bottom-24 bg-[#9E2A3D]/50 absolute lg:hidden w-96 h-96"
