@@ -13,7 +13,7 @@ export const data: DataType = {
   person: {
     picture: RohanDP,
     name: "Rohan Hussain",
-    titles: ["Software Engineer", "Master Communicator", "UI/UX Designer", "Leader", "Team Player"],
+    titles: ["Mid-Level Software Engineer", "Master Communicator", "Frontend Lead", "Leader", "Team Player"],
     phoneNumber: "+923320460729",
     email: "contact@rohanhussain.com",
     linkedIn: "https://linkedin.com/in/rohan-hussain",
