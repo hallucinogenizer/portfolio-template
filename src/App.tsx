@@ -10,9 +10,9 @@ import { TracingBeam } from "./components/ui/aceternity/TracingBeam";
 
 function App() {
   return (
-    <div className="bg-slate-950 w-full overflow-x-clip min-h-screen py-6">
+    <div className="bg-slate-950 w-full overflow-x-clip">
       <TracingBeam className="w-full lg:max-w-[92%] px-6" beamClassName="lg:block hidden">
-        <div className="flex flex-col gap-20">
+        <div className="flex flex-col gap-20 py-6">
           <TopNavBar />
           <HeroSection />
           <MyExpertiseSection />
