@@ -56,17 +56,18 @@ jobs:
 
       - name: Prepare Combined Output in Portfolio Dist
         run: |
-          echo "Copying existing config files (CNAME, .nojekyll) from deploy-repo to portfolio-repo/dist/"
+          echo "Copying existing config files (CNAME) from deploy-repo to portfolio-repo/dist/"
           # Use cp -n to avoid overwriting if files exist in dist, or remove -n to always use repo version
           # Use || true to prevent failure if source file doesn't exist in the clone
           cp -n deploy-repo/CNAME portfolio-repo/dist/CNAME || echo "CNAME not found in deploy-repo or copy failed."
-          cp -n deploy-repo/.nojekyll portfolio-repo/dist/.nojekyll || echo ".nojekyll not found in deploy-repo or copy failed."
-          cp -n deploy-repo/blog/.nojekyll portfolio-repo/dist/blog/.nojekyll || echo "/blog/.nojekyll not found in deploy-repo or copy failed."
-          # Add any other specific files you need to preserve here following the same pattern
+
+          echo "Creating .nojekyll files in portfolio-repo/dist and portfolio-repo/dist/blog"
+          mkdir -p portfolio-repo/dist/blog
+          touch portfolio-repo/dist/.nojekyll
+          touch portfolio-repo/dist/blog/.nojekyll
 
           echo "Copying existing blog content from deploy-repo/blog to portfolio-repo/dist/blog"
-          # Create the target blog directory within dist if it doesn't exist
-          mkdir -p portfolio-repo/dist/blog
+          # Create the target blog directory within dist if it doesn't exist (already done above)
           # Copy blog content; use || true to prevent failure if source /blog doesn't exist or copy fails
           cp -r deploy-repo/blog/* portfolio-repo/dist/blog/ || echo "No existing blog content found in deploy-repo/blog or copy failed."
 
