@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy Combined Sites to GitHub Pages
 
 on:
   push:
@@ -9,8 +9,11 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Source Repository
+      # Build the portfolio site
+      - name: Checkout Portfolio Source Repository
         uses: actions/checkout@v3
+        with:
+          path: portfolio-repo
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -20,7 +23,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 10
+          version: 8
           run_install: false
 
       - name: Get pnpm store directory
@@ -32,20 +35,55 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('portfolio-repo/**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
-      - name: Install Dependencies
+      - name: Install Portfolio Dependencies
+        working-directory: ./portfolio-repo
         run: pnpm install
 
-      - name: Build Next.js App
+      - name: Build Portfolio App
+        working-directory: ./portfolio-repo
         run: pnpm run build
 
+      # Build the blog site
+      - name: Checkout Blog Source Repository
+        uses: actions/checkout@v3
+        with:
+          repository: hallucinogenizer/personal-tailwind-nextjs-blog
+          ref: rohan
+          path: blog-repo
+
+      - name: Setup Yarn Cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/yarn
+          key: ${{ runner.os }}-yarn-${{ hashFiles('blog-repo/**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install Blog Dependencies
+        working-directory: ./blog-repo
+        run: yarn install
+
+      - name: Build Blog
+        working-directory: ./blog-repo
+        run: yarn build
+
+      # Create combined output directory
+      - name: Create Combined Output
+        run: |
+          mkdir -p combined-output
+          cp -r portfolio-repo/dist/* combined-output/
+          mkdir -p combined-output/blog
+          cp -r blog-repo/out/* combined-output/blog/
+
+      # Deploy combined output to GitHub Pages repo
       - name: Deploy to GitHub Pages Repo
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: dist # Using the dist folder as specified
+          folder: combined-output
           repository-name: hallucinogenizer/hallucinogenizer.github.io
           branch: main
           token: ${{ secrets.DEPLOY_TOKEN }}
