@@ -1,4 +1,4 @@
-name: Deploy Portfolio with Existing Blog via Manual Git
+name: Deploy Portfolio with Existing Blog and Config Files via Manual Git
 
 on:
   push:
@@ -18,12 +18,12 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: "18" # Or your required version
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 8
+          version: 8 # Or your required version
           run_install: false
 
       - name: Get pnpm store directory
@@ -50,18 +50,28 @@ jobs:
       # --- Prepare and Deploy Manually ---
       - name: Clone Target GitHub Pages Repository
         run: |
-          git clone https://x-access-token:${{ secrets.DEPLOY_TOKEN }}@github.com/hallucinogenizer/hallucinogenizer.github.io.git deploy-repo
+          # Clone only the latest commit history depth 1 for speed if full history isn't needed
+          git clone --depth 1 https://x-access-token:${{ secrets.DEPLOY_TOKEN }}@github.com/hallucinogenizer/hallucinogenizer.github.io.git deploy-repo
         # Ensure DEPLOY_TOKEN has repo scope permissions for hallucinogenizer.github.io
 
-      - name: Copy Existing Blog Content into Portfolio Dist
+      - name: Prepare Combined Output in Portfolio Dist
         run: |
+          echo "Copying existing config files (CNAME, .nojekyll) from deploy-repo to portfolio-repo/dist/"
+          # Use cp -n to avoid overwriting if files exist in dist, or remove -n to always use repo version
+          # Use || true to prevent failure if source file doesn't exist in the clone
+          cp -n deploy-repo/CNAME portfolio-repo/dist/CNAME || echo "CNAME not found in deploy-repo or copy failed."
+          cp -n deploy-repo/.nojekyll portfolio-repo/dist/.nojekyll || echo ".nojekyll not found in deploy-repo or copy failed."
+          cp -n deploy-repo/blog/.nojekyll portfolio-repo/dist/blog/.nojekyll || echo "/blog/.nojekyll not found in deploy-repo or copy failed."
+          # Add any other specific files you need to preserve here following the same pattern
+
           echo "Copying existing blog content from deploy-repo/blog to portfolio-repo/dist/blog"
           # Create the target blog directory within dist if it doesn't exist
           mkdir -p portfolio-repo/dist/blog
-          # Copy content; use || true to prevent failure if source /blog doesn't exist
-          cp -r deploy-repo/blog/* portfolio-repo/dist/blog/ || echo "No existing blog content found in deploy-repo/blog or copy failed. Continuing."
-          echo "Contents of portfolio-repo/dist after adding blog:"
-          ls -R portfolio-repo/dist
+          # Copy blog content; use || true to prevent failure if source /blog doesn't exist or copy fails
+          cp -r deploy-repo/blog/* portfolio-repo/dist/blog/ || echo "No existing blog content found in deploy-repo/blog or copy failed."
+
+          echo "Contents of portfolio-repo/dist after adding blog and config files:"
+          ls -aR portfolio-repo/dist # Use -a to show hidden files like .nojekyll
 
       - name: Deploy Updated Dist to GitHub Pages Repo
         run: |
@@ -75,22 +85,26 @@ jobs:
           find . -mindepth 1 -not -path "./.git*" -delete
 
           echo "Copying new combined content from portfolio-repo/dist..."
+          # Copy everything from the fully prepared dist directory
           cp -r ../portfolio-repo/dist/* .
+          # Need to also copy dotfiles like .nojekyll from dist explicitly if `*` doesn't include them
+          cp -r ../portfolio-repo/dist/.[^.]* . 2>/dev/null || echo "No dotfiles found in dist to copy."
+
 
           echo "Checking for changes..."
-          git status
+          git status -u # Show untracked files too
 
           echo "Adding changes..."
-          git add .
+          git add -A # Add all changes including deletions and untracked files
 
           echo "Committing changes..."
           # Check if there are changes to commit
           if git diff --staged --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "Deploy portfolio with existing blog content - $(date)"
+            git commit -m "Deploy portfolio, preserving config and existing blog - $(date)"
             echo "Pushing changes..."
             git push origin main # Make sure 'main' is your target branch
           fi
         env:
-          GIT_TOKEN: ${{ secrets.DEPLOY_TOKEN }} # Often not needed directly for https push with token in URL, but doesn't hurt
+          GIT_TOKEN: ${{ secrets.DEPLOY_TOKEN }} # Often not needed directly, but available if git commands require it
