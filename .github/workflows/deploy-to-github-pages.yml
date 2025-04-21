@@ -79,6 +79,14 @@ jobs:
           mkdir -p combined-output/blog
           cp -r blog-repo/out/* combined-output/blog/
 
+      # Create a temporary Git repository for the deployment
+      - name: Setup Git for Deployment
+        run: |
+          cd combined-output
+          git init
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
       # Deploy combined output to GitHub Pages repo
       - name: Deploy to GitHub Pages Repo
         uses: JamesIves/github-pages-deploy-action@v4
@@ -87,3 +95,6 @@ jobs:
           repository-name: hallucinogenizer/hallucinogenizer.github.io
           branch: main
           token: ${{ secrets.DEPLOY_TOKEN }}
+          git-config-name: GitHub Actions
+          git-config-email: actions@github.com
+          clean: true
