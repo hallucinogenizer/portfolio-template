@@ -45,7 +45,7 @@ jobs:
 
       - name: Build Portfolio App
         working-directory: ./portfolio-repo
-        run: pnpm run build
+        run: pnpm run build # Assuming output goes to portfolio-repo/dist
 
       # Build the blog site
       - name: Checkout Blog Source Repository
@@ -55,10 +55,11 @@ jobs:
           ref: rohan
           path: blog-repo
 
+      # Node.js is already set up, but ensure Yarn cache setup runs if needed
       - name: Setup Yarn Cache
         uses: actions/cache@v3
         with:
-          path: ~/.cache/yarn
+          path: ~/.cache/yarn # Or adjust if yarn cache path differs
           key: ${{ runner.os }}-yarn-${{ hashFiles('blog-repo/**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
@@ -69,31 +70,33 @@ jobs:
 
       - name: Build Blog
         working-directory: ./blog-repo
-        run: yarn build
+        run: yarn build # Assuming output goes to blog-repo/out
 
-      # Clone the GitHub Pages repository to prepare it for deployment
-      - name: Clone GitHub Pages Repository
-        run: |
-          git clone https://${{ secrets.DEPLOY_TOKEN }}@github.com/hallucinogenizer/hallucinogenizer.github.io.git deploy-repo
-
-      # Prepare the combined output in the deploy repository
+      # Prepare the combined output in a new directory
       - name: Prepare Combined Output
         run: |
-          # Remove existing content (except .git directory)
-          find deploy-repo -mindepth 1 -not -path "deploy-repo/.git*" -delete
+          # Create a directory for the final deployment content
+          mkdir deployment-output
 
-          # Copy portfolio build output to root
-          cp -r portfolio-repo/dist/* deploy-repo/
+          # Copy portfolio build output to root of the deployment directory
+          echo "Copying portfolio from portfolio-repo/dist/ to deployment-output/"
+          cp -r portfolio-repo/dist/* deployment-output/
 
-          # Copy blog build output to blog directory
-          mkdir -p deploy-repo/blog
-          cp -r blog-repo/out/* deploy-repo/blog/
+          # Copy blog build output to blog subdirectory in the deployment directory
+          echo "Creating blog directory and copying blog from blog-repo/out/ to deployment-output/blog/"
+          mkdir -p deployment-output/blog
+          cp -r blog-repo/out/* deployment-output/blog/
 
-      # Deploy using JamesIves action
+          echo "Contents of deployment-output:"
+          ls -R deployment-output
+
+      # Deploy using JamesIves action, pointing to the prepared directory
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: deploy-repo
+          folder: deployment-output # Deploy the contents of this directory
           repository-name: hallucinogenizer/hallucinogenizer.github.io
-          branch: main
+          branch: main # The branch to deploy to in the target repository
           token: ${{ secrets.DEPLOY_TOKEN }}
+          clean: true # Optional: Recommended to remove existing files before deploying
+          # The action will handle configuring git, committing, and pushing
