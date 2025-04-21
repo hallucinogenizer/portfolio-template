@@ -1,4 +1,4 @@
-name: Deploy Combined Sites to GitHub Pages
+name: Deploy Portfolio with Existing Blog via Manual Git
 
 on:
   push:
@@ -9,11 +9,11 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      # Build the portfolio site
+      # --- Build the portfolio site ---
       - name: Checkout Portfolio Source Repository
         uses: actions/checkout@v3
         with:
-          path: portfolio-repo
+          path: portfolio-repo # Checks out the repo containing this workflow
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -45,62 +45,52 @@ jobs:
 
       - name: Build Portfolio App
         working-directory: ./portfolio-repo
-        run: pnpm run build # Assuming output goes to portfolio-repo/dist
+        run: pnpm run build # Output goes to portfolio-repo/dist
 
-      # Build the blog site
-      - name: Checkout Blog Source Repository
-        uses: actions/checkout@v3
-        with:
-          repository: hallucinogenizer/personal-tailwind-nextjs-blog
-          ref: rohan
-          path: blog-repo
-
-      # Node.js is already set up, but ensure Yarn cache setup runs if needed
-      - name: Setup Yarn Cache
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/yarn # Or adjust if yarn cache path differs
-          key: ${{ runner.os }}-yarn-${{ hashFiles('blog-repo/**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      - name: Install Blog Dependencies
-        working-directory: ./blog-repo
-        run: yarn install
-
-      - name: Build Blog
-        working-directory: ./blog-repo
-        run: yarn build # Assuming output goes to blog-repo/out
-
-      # Prepare the combined output in a new directory
-      - name: Prepare Combined Output
+      # --- Prepare and Deploy Manually ---
+      - name: Clone Target GitHub Pages Repository
         run: |
-          # Create a directory for the final deployment content
-          mkdir deployment-output
+          git clone https://x-access-token:${{ secrets.DEPLOY_TOKEN }}@github.com/hallucinogenizer/hallucinogenizer.github.io.git deploy-repo
+        # Ensure DEPLOY_TOKEN has repo scope permissions for hallucinogenizer.github.io
 
-          # Copy portfolio build output to root of the deployment directory
-          echo "Copying portfolio from portfolio-repo/dist/ to deployment-output/"
-          cp -r portfolio-repo/dist/* deployment-output/
+      - name: Copy Existing Blog Content into Portfolio Dist
+        run: |
+          echo "Copying existing blog content from deploy-repo/blog to portfolio-repo/dist/blog"
+          # Create the target blog directory within dist if it doesn't exist
+          mkdir -p portfolio-repo/dist/blog
+          # Copy content; use || true to prevent failure if source /blog doesn't exist
+          cp -r deploy-repo/blog/* portfolio-repo/dist/blog/ || echo "No existing blog content found in deploy-repo/blog or copy failed. Continuing."
+          echo "Contents of portfolio-repo/dist after adding blog:"
+          ls -R portfolio-repo/dist
 
-          # Copy blog build output to blog subdirectory in the deployment directory
-          echo "Creating blog directory and copying blog from blog-repo/out/ to deployment-output/blog/"
-          mkdir -p deployment-output/blog
-          cp -r blog-repo/out/* deployment-output/blog/
+      - name: Deploy Updated Dist to GitHub Pages Repo
+        run: |
+          cd deploy-repo
+          echo "Configuring git user..."
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          echo "Contents of deployment-output:"
-          ls -R deployment-output
+          echo "Removing old content (keeping .git)..."
+          # Use find to delete everything except the .git directory
+          find . -mindepth 1 -not -path "./.git*" -delete
 
-      # Deploy using JamesIves action, pointing to the prepared directory
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: deployment-output # Deploy the contents of this directory
-          repository-name: hallucinogenizer/hallucinogenizer.github.io
-          branch: main # The branch to deploy to in the target repository
-          token: ${{ secrets.DEPLOY_TOKEN }}
-          clean: true # Optional: Recommended to remove existing files before deploying
-          # Add these lines to provide committer info explicitly:
-          git-config-name: "github-actions[bot]" # Or your preferred bot/user name
-          git-config-email: "github-actions[bot]@users.noreply.github.com" # Or your preferred bot/user email
-          # force: true # You had this, keep if needed but often not necessary unless overwriting history forcefully
-          # attempt-limit: 3 # You had this, keep if needed for network issues
+          echo "Copying new combined content from portfolio-repo/dist..."
+          cp -r ../portfolio-repo/dist/* .
+
+          echo "Checking for changes..."
+          git status
+
+          echo "Adding changes..."
+          git add .
+
+          echo "Committing changes..."
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Deploy portfolio with existing blog content - $(date)"
+            echo "Pushing changes..."
+            git push origin main # Make sure 'main' is your target branch
+          fi
+        env:
+          GIT_TOKEN: ${{ secrets.DEPLOY_TOKEN }} # Often not needed directly for https push with token in URL, but doesn't hurt
