@@ -71,30 +71,29 @@ jobs:
         working-directory: ./blog-repo
         run: yarn build
 
-      # Create combined output directory
-      - name: Create Combined Output
+      # Clone the GitHub Pages repository to prepare it for deployment
+      - name: Clone GitHub Pages Repository
         run: |
-          mkdir -p combined-output
-          cp -r portfolio-repo/dist/* combined-output/
-          mkdir -p combined-output/blog
-          cp -r blog-repo/out/* combined-output/blog/
+          git clone https://${{ secrets.DEPLOY_TOKEN }}@github.com/hallucinogenizer/hallucinogenizer.github.io.git deploy-repo
 
-      # Create a temporary Git repository for the deployment
-      - name: Setup Git for Deployment
+      # Prepare the combined output in the deploy repository
+      - name: Prepare Combined Output
         run: |
-          cd combined-output
-          git init
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
+          # Remove existing content (except .git directory)
+          find deploy-repo -mindepth 1 -not -path "deploy-repo/.git*" -delete
 
-      # Deploy combined output to GitHub Pages repo
-      - name: Deploy to GitHub Pages Repo
+          # Copy portfolio build output to root
+          cp -r portfolio-repo/dist/* deploy-repo/
+
+          # Copy blog build output to blog directory
+          mkdir -p deploy-repo/blog
+          cp -r blog-repo/out/* deploy-repo/blog/
+
+      # Deploy using JamesIves action
+      - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: combined-output
+          folder: deploy-repo
           repository-name: hallucinogenizer/hallucinogenizer.github.io
           branch: main
           token: ${{ secrets.DEPLOY_TOKEN }}
-          git-config-name: GitHub Actions
-          git-config-email: actions@github.com
-          clean: true
