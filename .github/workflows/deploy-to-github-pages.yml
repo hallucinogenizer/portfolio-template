@@ -1,0 +1,26 @@
+jobs:
+  build-and-deploy-to-github-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: "npm"
+
+      - name: Install Dependencies
+        run: pnpm ci
+
+      - name: Build Next.js App
+        run: pnpm run build
+
+      - name: Deploy to GitHub Pages Repo
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist # or whatever folder contains your build output
+          repository-name: hallucinogenizer/hallucinogenizer.github.io
+          branch: main
+          token: ${{ secrets.DEPLOY_TOKEN }}
