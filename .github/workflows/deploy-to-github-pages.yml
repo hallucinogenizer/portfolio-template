@@ -1,5 +1,12 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-  build-and-deploy-to-github-pages:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Source Repository
@@ -9,10 +16,28 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "18"
-          cache: "npm"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
 
       - name: Install Dependencies
-        run: pnpm ci
+        run: pnpm install
 
       - name: Build Next.js App
         run: pnpm run build
@@ -20,7 +45,7 @@ jobs:
       - name: Deploy to GitHub Pages Repo
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: dist # or whatever folder contains your build output
+          folder: dist # Using the dist folder as specified
           repository-name: hallucinogenizer/hallucinogenizer.github.io
           branch: main
           token: ${{ secrets.DEPLOY_TOKEN }}
