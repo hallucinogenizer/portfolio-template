@@ -99,4 +99,8 @@ jobs:
           branch: main # The branch to deploy to in the target repository
           token: ${{ secrets.DEPLOY_TOKEN }}
           clean: true # Optional: Recommended to remove existing files before deploying
-          # The action will handle configuring git, committing, and pushing
+          # Add these lines to provide committer info explicitly:
+          user_name: "github-actions[bot]" # Or your preferred bot/user name
+          user_email: "github-actions[bot]@users.noreply.github.com" # Or your preferred bot/user email
+          # force: true # You had this, keep if needed but often not necessary unless overwriting history forcefully
+          # attempt-limit: 3 # You had this, keep if needed for network issues
