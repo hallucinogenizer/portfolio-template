@@ -13,7 +13,14 @@ export const data: DataType = {
   person: {
     picture: RohanDP,
     name: "Rohan Hussain",
-    titles: ["Mid-Level Software Engineer", "Master Communicator", "Frontend Lead", "Leader", "Team Player"],
+    titles: [
+      "Senior Full Stack Software Engineer",
+      "Frontend-Heavy Senior Software Engineer",
+      "NextJS App Router Expert",
+      "Master Communicator",
+      "Leader",
+      "Team Player",
+    ],
     phoneNumber: "+923320460729",
     email: "contact@rohanhussain.com",
     linkedIn: "https://linkedin.com/in/rohan-hussain",
@@ -29,17 +36,20 @@ export const data: DataType = {
     {
       icon: "fa-brands fa-react",
       title: "NextJS App Router",
-      description: "Proficient in developing React applications with NextJS v14/15.",
+      description:
+        "Proficient in developing React applications with NextJS v14/15.",
     },
     {
       icon: "fa-brands fa-node",
       title: "ExpressJS, NestJS",
-      description: "Skilled in building scalable and maintainable server-side applications using NestJS.",
+      description:
+        "Skilled in building scalable and maintainable server-side applications using NestJS.",
     },
     {
       icon: "fa-brands fa-aws",
       title: "DevOps with AWS",
-      description: "Expertise in cloud computing with AWS, including IAM, EC2, Lambdas, and CI/CD CodePipeline.",
+      description:
+        "Expertise in cloud computing with AWS, including IAM, EC2, Lambdas, and CI/CD CodePipeline.",
     },
     {
       icon: "fa-solid fa-paint-brush",
@@ -50,7 +60,8 @@ export const data: DataType = {
     {
       icon: "fa-solid fa-comments",
       title: "Communication",
-      description: "Excellent communication is my superpower and I use it to enable my team to work smoothly.",
+      description:
+        "Excellent communication is my superpower and I use it to enable my team to work smoothly.",
     },
   ],
   testimonials: [
@@ -89,9 +100,16 @@ export const data: DataType = {
   ],
   experience: [
     {
-      date: "May 2023 - Present",
+      date: "February 2025 - Present",
+      companyName: "Turing",
+      jobTitle: "Lead Senior Software Engineer & AI Trainer",
+      description: `At turing I am working on training industry leading LLMs in their programming capabilities. Turing does not allow me to name the client, but I can say that it is one of the top LLMs in the world right now.`,
+    },
+    {
+      date: "May 2023 - February 2025",
       companyName: "Metal (Y-Combinator Startup)",
-      jobTitle: "Founding Full Stack Frontend-Heavy Software Engineer II (Level 4)",
+      jobTitle:
+        "Founding Full Stack Frontend-Heavy Software Engineer II (Level 4)",
       description: `Metal formerly known as Apollo Group is the next project of the Airlift Technologies team, that raised $120M+ in capital before shutting down. I have helped launch 2 MVP products, involving GPT-based chatbots and React-based web applications. I am working in a dynamic startup environment with a small team of software engineers.
       
       Within a period of 8 months, I was promoted two times due to exceptional performance.`,
@@ -128,7 +146,8 @@ export const data: DataType = {
   ],
   blog: [
     {
-      title: "How to incrementally add TypeScript response-types to your React/Svelte/Vue/Angular API data fetching",
+      title:
+        "How to incrementally add TypeScript response-types to your React/Svelte/Vue/Angular API data fetching",
       link: "https://rohanhussain.com/blog/blog/post/how-to-incrementally-introduce-strong-typing-to-your-api-fetches-in-react/",
       description:
         "This article dives into how you can use projects like orval to consume an OpenAPI spec file and produce a client wrapper for almost any fetching library of your choosing",
@@ -136,7 +155,8 @@ export const data: DataType = {
       datePosted: "July 26, 2024",
     },
     {
-      title: "Setting up Supertokens with a NextJS 13 Frontend and an ExpressJS Backend",
+      title:
+        "Setting up Supertokens with a NextJS 13 Frontend and an ExpressJS Backend",
       link: "https://rohanhussain.com/blog/blog/post/supertokens-with-nextjs-and-expressjs/",
       description:
         "This article teaches you how to locally set up a NextJS 13 frontend (with App Router as well as Pages Router) and a separate ExpressJS backend and also explains how the whole setup works.",
