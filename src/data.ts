@@ -100,7 +100,13 @@ export const data: DataType = {
   ],
   experience: [
     {
-      date: "February 2025 - Present",
+      date: "May 2025 - Present",
+      companyName: "Beyond ONE",
+      jobTitle: "Senior Software Engineer 1 & Team Lead",
+      description: `I am team lead for the VCR (Virgin Connect Roam) project under which I was tasked with rebuilding, for better performance and SEO, the VCR website from scratch which was previously built in Flutter Web. This seemed daunting and seemingly impossible given the time-frame of 3 months but I achieved it, hence helping the company reach quarterly revenue goals.`,
+    },
+    {
+      date: "March 2025 - May 2025",
       companyName: "Turing",
       jobTitle: "Lead Senior Software Engineer & AI Trainer",
       description: `At turing I am working on training industry leading LLMs in their programming capabilities. Turing does not allow me to name the client, but I can say that it is one of the top LLMs in the world right now.`,
