@@ -23,7 +23,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 11 # Matches the lockfile format used by this repo
+          version: 10 # Supports the v9 lockfile while remaining compatible with Node 18
           run_install: false
 
       - name: Get pnpm store directory
