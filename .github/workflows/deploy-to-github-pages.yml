@@ -21,9 +21,9 @@ jobs:
           node-version: "18" # Or your required version
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
-          version: 8 # Or your required version
+          version: 11 # Matches the lockfile format used by this repo
           run_install: false
 
       - name: Get pnpm store directory
