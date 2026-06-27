@@ -1,8 +1,8 @@
 import { Fade } from "react-awesome-reveal";
 
-import { HOVER_TRANSLATE_CLASSES } from "../../lib/constants";
 import { TestimonialDataType, TestimonialPersonType } from "../../lib/types";
 import { data } from "../../data";
+import { cn } from "../../lib/utils/cn";
 
 export default function TestimonialCards({
   testimonialsToDisplayRange,
@@ -10,11 +10,11 @@ export default function TestimonialCards({
   testimonialsToDisplayRange: [number, number];
 }) {
   return (
-    <div className="flex flex-wrap justify-between gap-16">
+    <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
       {data.testimonials
         .slice(testimonialsToDisplayRange[0], testimonialsToDisplayRange[1])
         .map((testimonialData, i) => (
-          <Fade direction="up" delay={i * 200} triggerOnce>
+          <Fade key={testimonialData.person.name} direction="up" delay={i * 150} triggerOnce>
             <TestimonialCard content={testimonialData} />
           </Fade>
         ))}
@@ -24,13 +24,16 @@ export default function TestimonialCards({
 
 const TestimonialCard = ({ content }: { content: TestimonialDataType }) => (
   <div
-    className={`bg-zinc-400 bg-opacity-20 flex flex-col gap-8 justify-around shadow p-6 rounded-lg ${HOVER_TRANSLATE_CLASSES} md:w-[21.625rem] w-full`}
+    className={cn(
+      "group flex min-h-[27rem] flex-col justify-between gap-8 rounded-[1.5rem] border border-white/10 bg-[var(--panel)] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.25)] backdrop-blur",
+      "transition-all duration-300 hover:-translate-y-2 hover:border-[var(--amber)]/35 hover:bg-[var(--panel-strong)]"
+    )}
   >
     <div className="flex flex-col gap-4">
       <div>
-        <i className="fa-solid fa-quote-left fa-2xl text-teal-500"></i>
+        <i className="fa-solid fa-quote-left fa-2xl text-[var(--amber)]"></i>
       </div>
-      <p className="text-light md:text-base text-sm text-justify leading-tight whitespace-pre-wrap overflow-ellipsis line-clamp-[14]">
+      <p className="line-clamp-[14] whitespace-pre-wrap text-sm leading-6 text-[#d8d0c6] md:text-base">
         {content.quote}
       </p>
     </div>
@@ -43,16 +46,13 @@ const TestominialPersonProfile = ({
 }: {
   content: TestimonialPersonType;
 }) => (
-  <div className="flex gap-4 items-center">
-    <img src={content.image} className="rounded-full object-fill w-16 h-16" />
+  <div className="flex items-center gap-4 border-t border-white/10 pt-5">
+    <img src={content.image} alt={content.name} className="h-16 w-16 rounded-2xl object-cover" />
     <div className="flex flex-col gap-1">
-      <h5
-        className="text-light md:text-lg text-base font-medium leading-relaxed"
-        style={{ fontFamily: "Roboto Mono" }}
-      >
+      <h5 className="font-['IBM_Plex_Mono'] text-base font-semibold leading-relaxed text-[#f6f0e8] md:text-lg">
         {content.name}
       </h5>
-      <p className="text-stone-300 text-sm whitespace-pre-wrap font-normal capitalize leading-tight">
+      <p className="whitespace-pre-wrap text-sm font-normal capitalize leading-tight text-[#b8aea2]">
         {content.title}
       </p>
     </div>

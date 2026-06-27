@@ -9,22 +9,28 @@ import { cn } from "../../lib/utils/cn";
 
 export default function WorkTimelineSection() {
   return (
-    <div
+    <section
       className={cn(
-        "flex flex-col gap-16 relative overflow-clip",
+        "relative flex flex-col gap-14 overflow-clip",
         HORIZONTAL_PADDING
       )}
       id={WORK_EXPERIENCE_SECTION_ID}
     >
-      <div className="relative z-10 flex flex-col md:gap-16 gap-2">
-        <SectionHeading title={["My Work", "Experience"]} />
+      <div className="relative z-10 flex flex-col gap-5 md:max-w-4xl">
+        <SectionHeading title={["Selected", "Experience"]} />
+        <p className="text-lg leading-8 text-[#b8aea2]">
+          A career path shaped by high-ownership product builds, startup velocity, platform work, and senior team
+          leadership.
+        </p>
+      </div>
+      <div className="relative z-10">
         <TimelineDisplay />
       </div>
 
       {/* background hexagonal pattern */}
-      <div className="absolute">
-        <img src={HexagonalBackgroundPattern} className="opacity-20" />
+      <div className="absolute -right-28 top-24 opacity-30">
+        <img src={HexagonalBackgroundPattern} className="max-w-none opacity-25" />
       </div>
-    </div>
+    </section>
   );
 }

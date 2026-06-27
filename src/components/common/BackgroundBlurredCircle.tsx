@@ -1,10 +1,6 @@
 import { CSSProperties } from "react";
 import { cn } from "../../lib/utils/cn";
-
-export enum BgCircleVariant {
-  BLUE = "blue",
-  RED = "red",
-}
+import { BgCircleVariant } from "../../lib/constants";
 
 export const BackgroundBlurredCircle = ({
   variant,

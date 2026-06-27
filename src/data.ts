@@ -14,12 +14,12 @@ export const data: DataType = {
     picture: RohanDP,
     name: "Rohan Hussain",
     titles: [
-      "Senior Full Stack Software Engineer",
-      "Frontend-Heavy Senior Software Engineer",
-      "NextJS App Router Expert",
-      "Master Communicator",
-      "Leader",
-      "Team Player",
+      "Senior Software Engineer",
+      "Frontend-Focused Team Lead",
+      "NextJS 15 App Router Engineer",
+      "Full Stack Product Engineer",
+      "Technical Leader",
+      "Strong Communicator",
     ],
     phoneNumber: "+923320460729",
     email: "contact@rohanhussain.com",
@@ -29,39 +29,39 @@ export const data: DataType = {
   skills: [
     {
       icon: "fa-brands fa-react",
-      title: "ReactJS, NextJS",
+      title: "React, NextJS, TypeScript",
       description:
-        "Experienced in building modern interactive user interfaces using React, Server Components, and NextJS 14 App Router.",
+        "Experienced in building modern product interfaces with React, TypeScript, Server Components, and the NextJS App Router.",
     },
     {
-      icon: "fa-brands fa-react",
-      title: "NextJS App Router",
+      icon: "fa-solid fa-people-group",
+      title: "Frontend Team Leadership",
       description:
-        "Proficient in developing React applications with NextJS v14/15.",
+        "Lead frontend teams through roadmap planning, DRI ownership, codebase modernization, stacked PRs, and fast production delivery.",
     },
     {
       icon: "fa-brands fa-node",
       title: "ExpressJS, NestJS",
       description:
-        "Skilled in building scalable and maintainable server-side applications using NestJS.",
+        "Skilled in building maintainable backend services with NodeJS, ExpressJS, NestJS, PostgreSQL, Redis, and API-first workflows.",
     },
     {
       icon: "fa-brands fa-aws",
-      title: "DevOps with AWS",
+      title: "Cloud, SEO, Performance",
       description:
-        "Expertise in cloud computing with AWS, including IAM, EC2, Lambdas, and CI/CD CodePipeline.",
+        "Ship high-performance web platforms with AWS, Vercel, Cloudflare Edge CDN, CI/CD, and near-perfect Lighthouse targets.",
     },
     {
-      icon: "fa-solid fa-paint-brush",
-      title: "UI/UX Design",
+      icon: "fa-solid fa-vial-circle-check",
+      title: "Testing & Reliability",
       description:
-        "Proficient in creating visually appealing and user-friendly interfaces, considering both design and user experience principles.",
+        "Use Playwright, Jest, React Testing Library, Selenium, Sentry, and CI practices to keep product teams shipping confidently.",
     },
     {
-      icon: "fa-solid fa-comments",
-      title: "Communication",
+      icon: "fa-solid fa-pen-nib",
+      title: "Design-Minded Execution",
       description:
-        "Excellent communication is my superpower and I use it to enable my team to work smoothly.",
+        "Bring HCI, Figma, and visual design instincts into engineering work to produce interfaces that feel clear and polished.",
     },
   ],
   testimonials: [
@@ -101,31 +101,39 @@ export const data: DataType = {
   experience: [
     {
       date: "May 2025 - Present",
+      companyName: "Conduit (FleetGlue)",
+      jobTitle: "Senior Software Engineer (Frontend Focused) & Team Lead",
+      description:
+        "Lead frontend engineering remotely for a complex factory robot automation application used in large US factories. Migrated the codebase from React 17, NextJS 12, GeistUI, and styled-components to React 18, NextJS 13, TailwindCSS, and ShadCN while driving a broader UI overhaul. Improved delivery speed through agentic development, jujutsu, stacked PR workflows, and a production cadence that moved from twice a month to twice a day.",
+    },
+    {
+      date: "May 2025 - Present",
       companyName: "Beyond ONE",
       jobTitle: "Senior Software Engineer 1 & Team Lead",
-      description: `I am team lead for the VCR (Virgin Connect Roam) project under which I was tasked with rebuilding, for better performance and SEO, the VCR website from scratch which was previously built in Flutter Web. This seemed daunting and seemingly impossible given the time-frame of 3 months but I achieved it, hence helping the company reach quarterly revenue goals.`,
+      description:
+        "Lead the VCR (Virgin Connect Roam) rebuild, replacing a Flutter Web experience with a high-performance NextJS web platform. Achieved near-perfect Lighthouse performance and SEO using static rendering and Cloudflare Edge CDN, helping the company reach quarterly revenue goals. Built a reusable TypeScript, TanStack Query, Orval, and ShadCN base for future company projects.",
     },
     {
       date: "March 2025 - May 2025",
       companyName: "Turing",
       jobTitle: "Lead Senior Software Engineer & AI Trainer",
-      description: `At turing I am working on training industry leading LLMs in their programming capabilities. Turing does not allow me to name the client, but I can say that it is one of the top LLMs in the world right now.`,
+      description:
+        "Worked on training industry-leading LLMs in programming capability. Turing does not allow naming the client, but the work involved one of the top LLM products in the world.",
     },
     {
       date: "May 2023 - February 2025",
       companyName: "Metal (Y-Combinator Startup)",
       jobTitle:
         "Founding Full Stack Frontend-Heavy Software Engineer II (Level 4)",
-      description: `Metal formerly known as Apollo Group is the next project of the Airlift Technologies team, that raised $120M+ in capital before shutting down. I have helped launch 2 MVP products, involving GPT-based chatbots and React-based web applications. I am working in a dynamic startup environment with a small team of software engineers.
-      
-      Within a period of 8 months, I was promoted two times due to exceptional performance.`,
+      description:
+        "First software engineer hired at Metal, the next company from the Airlift team. Led the launch of two MVPs: a GPT-based chatbot web app and a React/NextJS 14 application with a NestJS and PostgreSQL backend. Promoted twice within 9 months, granted significant equity, and led a team of 5 frontend engineers while owning roadmap execution, DRIs, deadlines, and delivery.",
     },
     {
       date: "August 2022 - April 2023",
       companyName: "Educative",
       jobTitle: "Full Stack Software Engineer",
       description:
-        "I worked in the Learner Experience team at Educative where we dealt with upto 80% of the codebase and shipped features directly used by over a million users. Good programming practices, scalability, and healthy teamwork were at the heart of our work at Educative.",
+        "Worked on the Learner Experience team shipping features for Educative.io's primary learner and enterprise customer base. Built production-facing work across search, enterprise features, Projects, and landing pages including educative.io and devpath.com, using React, NextJS, TypeScript, Redux, TailwindCSS, Flask, Redis, GCP, Selenium, Jest, and CI/CD.",
     },
     {
       date: "May - July 2022",
@@ -139,15 +147,14 @@ export const data: DataType = {
       companyName: "Open Data Pakistan (Funded by Higher Education Commission)",
       jobTitle: "Team Lead Software Engineer",
       description:
-        "Built on the Open Source CKAN project | Developed custom plugins and themes | Managed team of 3 developers | Upgraded the production AWS EC2 instance from CKAN 2.8 to CKAN 2.9 | This project also acted as my Senior Year Project.",
+        "Led development on Pakistan Government's official data portal built on the open-source CKAN project. Managed a team of 3 developers, developed custom plugins and themes, and led the production upgrade to CKAN 2.9 on AWS EC2.",
     },
     {
-      date: "December 2021 - April 2022",
+      date: "December 2021 - July 2022",
       companyName: "Institute of Emerging Careers (IEC)",
-      jobTitle: "Team Lead Software Engineer",
-      description: `Designed for Low-Computer-Literate Students from non-Urban Areas | System optimized for low-power systems | Server-side routing | Ideated 4 scalable independent systems for the 4 phases of the IEC Process (Acquisition, Learning, Placement, Community) that work in harmony.
-  
-  For over a year I worked as the only engineer on the project. Afterwards as a 6-month exit plan, I helped build a team and assumed the role of Engineering Manager and Mentor before finally leaving the company when the team no longer needed my oversight.`,
+      jobTitle: "Lead Software Engineer",
+      description:
+        "Built a scalability-focused student acquisition system for low-computer-literate students from non-urban areas. Enabled the company to onboard a new cohort every 3 weeks, then executed a 6-month exit strategy by hiring, training, and handing over to an engineering team.",
     },
   ],
   blog: [

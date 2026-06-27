@@ -1,3 +1,54 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --ink: #f6f0e8;
+    --muted: #b8aea2;
+    --panel: rgba(255, 255, 255, 0.065);
+    --panel-strong: rgba(255, 255, 255, 0.105);
+    --line: rgba(255, 255, 255, 0.14);
+    --cyan: #31d5f5;
+    --amber: #f4b45b;
+    --plum: #9a4cff;
+  }
+
+  html {
+    background: #07080d;
+  }
+
+  body {
+    min-width: 320px;
+    min-height: 100vh;
+    background: #07080d;
+    color: var(--ink);
+    font-family: "Manrope", sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: rgba(244, 180, 91, 0.35);
+    color: #fff8ec;
+  }
+}
+
+@layer components {
+  .site-shell {
+    background:
+      radial-gradient(circle at 18% 6%, rgba(49, 213, 245, 0.2), transparent 28rem),
+      radial-gradient(circle at 82% 18%, rgba(154, 76, 255, 0.18), transparent 24rem),
+      radial-gradient(circle at 45% 78%, rgba(244, 180, 91, 0.1), transparent 28rem),
+      linear-gradient(145deg, #07080d 0%, #0d111d 48%, #090910 100%);
+  }
+
+  .grain-overlay {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent 78%);
+  }
+}
