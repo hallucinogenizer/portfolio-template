@@ -54,56 +54,54 @@ jobs:
           git clone --depth 1 https://x-access-token:${{ secrets.DEPLOY_TOKEN }}@github.com/hallucinogenizer/hallucinogenizer.github.io.git deploy-repo
         # Ensure DEPLOY_TOKEN has repo scope permissions for hallucinogenizer.github.io
 
-      - name: Prepare Combined Output in Portfolio Dist
-        run: |
-          echo "Copying existing config files (CNAME) from deploy-repo to portfolio-repo/dist/"
-          # Use cp -n to avoid overwriting if files exist in dist, or remove -n to always use repo version
-          # Use || true to prevent failure if source file doesn't exist in the clone
-          cp -n deploy-repo/CNAME portfolio-repo/dist/CNAME || echo "CNAME not found in deploy-repo or copy failed."
-
-          echo "Creating .nojekyll files in portfolio-repo/dist and portfolio-repo/dist/blog"
-          mkdir -p portfolio-repo/dist/blog
-          touch portfolio-repo/dist/.nojekyll
-          touch portfolio-repo/dist/blog/.nojekyll
-
-          echo "Copying existing blog content from deploy-repo/blog to portfolio-repo/dist/blog"
-          # Create the target blog directory within dist if it doesn't exist (already done above)
-          # Copy blog content; use || true to prevent failure if source /blog doesn't exist or copy fails
-          cp -r deploy-repo/blog/* portfolio-repo/dist/blog/ || echo "No existing blog content found in deploy-repo/blog or copy failed."
-
-          echo "Contents of portfolio-repo/dist after adding blog and config files:"
-          ls -aR portfolio-repo/dist # Use -a to show hidden files like .nojekyll
-
-      - name: Deploy Updated Dist to GitHub Pages Repo
+      - name: Deploy Portfolio Build into GitHub Pages Repo
         run: |
           cd deploy-repo
+
           echo "Configuring git user..."
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          echo "Removing old content (keeping .git)..."
-          # Use find to delete everything except the .git directory
-          find . -mindepth 1 -not -path "./.git*" -delete
+          # The portfolio build owns ONLY the top-level paths that appear in
+          # portfolio-repo/dist (currently: index.html and assets/). We remove
+          # just those paths from the deploy repo so stale, content-hashed asset
+          # files are cleaned up, then copy the fresh build in.
+          #
+          # Everything else living in the Pages repo is left completely untouched:
+          #   - blog/            (the separately-built Next.js blog)
+          #   - financial-report/
+          #   - zohoverify/
+          #   - CNAME, .nojekyll, and anything added in the future
+          #
+          # This is what prevents deploys from wiping non-portfolio content.
+          echo "Removing previous portfolio files (only the paths this build produces)..."
+          for entry in ../portfolio-repo/dist/* ../portfolio-repo/dist/.[!.]*; do
+            [ -e "$entry" ] || continue
+            name="$(basename "$entry")"
+            echo "  - replacing ./$name"
+            rm -rf "./$name"
+          done
 
-          echo "Copying new combined content from portfolio-repo/dist..."
-          # Copy everything from the fully prepared dist directory
-          cp -r ../portfolio-repo/dist/* .
-          # Need to also copy dotfiles like .nojekyll from dist explicitly if `*` doesn't include them
-          cp -r ../portfolio-repo/dist/.[^.]* . 2>/dev/null || echo "No dotfiles found in dist to copy."
+          echo "Copying fresh portfolio build in (including any dotfiles)..."
+          cp -a ../portfolio-repo/dist/. .
 
+          # A single root .nojekyll disables Jekyll for the WHOLE site, so
+          # underscore-prefixed dirs like blog/_next are served as-is.
+          touch .nojekyll
 
-          echo "Checking for changes..."
-          git status -u # Show untracked files too
+          echo "Top-level contents of deploy repo after copy:"
+          ls -A
 
-          echo "Adding changes..."
-          git add -A # Add all changes including deletions and untracked files
+          echo "Staging changes..."
+          git add -A
 
-          echo "Committing changes..."
-          # Check if there are changes to commit
+          echo "Changes to be committed:"
+          git status -s
+
           if git diff --staged --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "Deploy portfolio, preserving config and existing blog - $(date)"
+            git commit -m "Deploy portfolio (portfolio files only, preserving other content) - $(date -u)"
             echo "Pushing changes..."
             git push origin main # Make sure 'main' is your target branch
           fi
